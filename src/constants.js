@@ -1,0 +1,5 @@
+const TRX_DIVIDER_AMOUNT = 1000000
+
+export default {
+    TRX_DIVIDER_AMOUNT
+}
