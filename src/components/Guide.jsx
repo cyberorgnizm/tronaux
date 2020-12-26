@@ -19,23 +19,27 @@ export default function Guide() {
         <Col className="text-center">
           <p>Step #1: Make deposit</p>
           <Row>
-            <Col className="mr-1 bg-primary p-2">
+            <Col className="bg-primary text-white p-3 mr-1 rounded">
               <p>GET TRON (TRX)</p>
               <p className="text-left">
                 We recommend to use: TronLink / TronMask browsers extensions, or
                 TronWallet / Banko mobile apps. You can get TRX coins via
                 popular exchangers.
               </p>
-              <button className="btn btn-md">HOW TO GET TRX</button>
+              <button className="btn btn-md bg-white w-100 mt-2">
+                HOW TO GET TRX
+              </button>
             </Col>
-            <Col className="ml-1 bg-primary p-2">
-              <p>SEND TRX TO OUR SMART-CONTRACT</p>
+            <Col className="bg-primary text-white p-3 ml-1 rounded">
+              <span>SEND TRX TO OUR SMART-CONTRACT</span>
               <p className="text-left">
                 Send any amount of TRX on smart-contract address and start to
                 get earnings every moment. Minimal deposit amount is 10 TRX. No
                 maximal amount.
               </p>
-              <button className="btn btn-md">MAKE DEPOSIT</button>
+              <button className="btn btn-md bg-white w-100">
+                MAKE DEPOSIT
+              </button>
             </Col>
           </Row>
           <img src={blueLogo} alt="Tron logo" className="mt-4" />
@@ -48,6 +52,22 @@ export default function Guide() {
           </button>
 
           <p>Step #3: Request withdraw</p>
+          <Col className="px-0">
+            <div className="bg-primary text-white text-left p-3 rounded">
+              <span className="d-block mb-1">REQUEST TRX WITHDRAW </span>
+              <span className="d-block mb-1">
+                Your payout will come instantly
+              </span>
+              <span className="d-block mb-1">
+                Request withdraw from the same wallet you deposited
+              </span>
+              <span className="d-block my-3">
+              All your
+                wallet deposits and referral earnings will be withdrawn with
+                single transaction per 1 request
+              </span>
+            </div>
+          </Col>
         </Col>
         <Col className="text-center">
           <img src={blueLogo} alt="Tron logo" />
@@ -63,7 +83,7 @@ export default function Guide() {
           <p className="pt-5">Step #2: Get earnings</p>
           <Row>
             <Col>
-              <div className="p-2 bg-primary">
+              <div className="bg-primary text-white p-3 rounded">
                 <p>GET YOUR TRX EVERY MOMENT</p>
                 <p className="text-left">
                   You can check all your wallet information, including your
@@ -73,7 +93,9 @@ export default function Guide() {
                   instantly on your wallet balance and can be withdrawn any time
                   along with earnings.
                 </p>
-                <button className="btn btn-md">YOUR WALLET STATISTICS</button>
+                <button className="btn btn-md bg-white w-75">
+                  YOUR WALLET STATISTICS
+                </button>
               </div>
             </Col>
           </Row>

@@ -3,10 +3,10 @@ import AppNavbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Description from "./components/Description";
 import Guide from "./components/Guide";
-import AppModal from "./components/Modal";
+import {DepositModal, StatisticsModal} from "./components/Modal";
 import Contact from "./components/Contact";
 import Contract from "./components/Contract";
-import TronWebContext from './contexts';
+import TronWebContext from "./contexts";
 
 // =========================
 // States variables
@@ -343,7 +343,7 @@ function useTronWeb() {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [tronWeb]);
 
   return tronWeb;
 }
@@ -352,26 +352,32 @@ function useTronWeb() {
 // Component
 // ========================
 function App() {
-  const [show, setShow] = useState(false);
-  const handleShow = () => setShow(!show);
+  const [showDeposit, setShowDeposit] = useState(false);
+  const [showStat, setShowStat] = useState(false);
+  
+  const handleShowDeposit = () => setShowDeposit(!showDeposit);
+  const handleShowStat = () => setShowStat(!showStat);
 
   const tronWeb = useTronWeb();
 
-  const contract = tronWeb && tronWeb.contract(abi, contractAddress)
+  const contract = tronWeb && tronWeb.contract(abi, contractAddress);
 
   return (
     <>
-      <AppNavbar onToggle={handleShow} />
-      <div className="mx-5 px-5">
-        <TronWebContext.Provider value={tronWeb && tronWeb}>
-          <Hero contract={contract}/>
-          <Description contract={contract}/>
+      <AppNavbar onToggleDeposit={handleShowDeposit} onToggleStat={handleShowStat} />
+      <TronWebContext.Provider value={tronWeb && tronWeb}>
+        <div className="mx-5 px-5">
+          <Hero contract={contract} />
+          <Description contract={contract} />
           <Guide />
-          <AppModal isOpen={show} onToggle={handleShow} />
+          {/* Deposit Modal */}
+          <DepositModal isOpen={showDeposit} onToggle={handleShowDeposit} />
+          {/* Statistics Modal */}
+          <StatisticsModal isOpen={showStat} onToggle={handleShowStat}/>
           <Contract />
-          <Contact />
-        </TronWebContext.Provider>
-      </div>
+        </div>
+        <Contact />
+      </TronWebContext.Provider>
     </>
   );
 }
