@@ -367,11 +367,11 @@ function App() {
       <AppNavbar onToggleDeposit={handleShowDeposit} onToggleStat={handleShowStat} />
       <TronWebContext.Provider value={tronWeb && tronWeb}>
         <div className="mx-5 px-5">
-          <Hero contract={contract} />
+          <Hero contract={contract} onToggleDeposit={handleShowDeposit} />
           <Description contract={contract} />
           <Guide />
           {/* Deposit Modal */}
-          <DepositModal isOpen={showDeposit} onToggle={handleShowDeposit} />
+          <DepositModal isOpen={showDeposit} onToggle={handleShowDeposit} contract={contract} />
           {/* Statistics Modal */}
           <StatisticsModal isOpen={showStat} onToggle={handleShowStat}/>
           <Contract />

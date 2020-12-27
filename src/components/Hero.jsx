@@ -6,7 +6,7 @@ import cash from "../assets/cash.svg";
 import TronWebContext from "../contexts";
 import Constants from "../constants";
 
-export default function Hero({ contract }) {
+export default function Hero({ contract, onToggleDeposit }) {
   const [totalInvested, setTotalInvested] = useState("###");
   const [totalParticipants, setTotalParticipants] = useState("###");
 
@@ -64,7 +64,7 @@ export default function Hero({ contract }) {
               Smart contract-verified and audited by independent company
             </span>
           </div>
-          <button className="btn btn-md btn-primary d-block w-100 my-3">
+          <button className="btn btn-md btn-primary d-block w-100 my-3" onClick={onToggleDeposit}>
             MAKE INVESTMENT NOW
           </button>
           <button className="btn btn-md btn-primary d-block w-100">

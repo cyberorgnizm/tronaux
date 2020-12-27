@@ -1,6 +1,27 @@
+import { useState, useContext } from "react";
 import { Modal, Col } from "react-bootstrap";
+import TronWebContext from "../contexts";
+import Constants from "../constants";
 
-export function DepositModal({ isOpen, onToggle }) {
+export function DepositModal({ isOpen, onToggle, contract }) {
+  const [amount, setAmount] = useState(0);
+
+  const twc = useContext(TronWebContext);
+
+  const handleInvestment = async () => {
+    if (contract) {
+      try {
+        const { TRX_DIVIDER_AMOUNT } = Constants;
+        const amt = Math.floor(amount * TRX_DIVIDER_AMOUNT);
+        await contract
+          .invest(twc.defaultAddress.base58)
+          .send({ callValue: amt });
+      } catch (error) {
+        alert("An error occured, while trying to invest, please ensure your tronlink wallet in activated")
+      }
+    }
+  };
+
   return (
     <Modal size="lg" show={isOpen} onHide={onToggle}>
       <Modal.Header
@@ -13,8 +34,16 @@ export function DepositModal({ isOpen, onToggle }) {
       <Modal.Body className="bg-primary text-white border-top-0">
         <Col sm={6} className="mx-auto text-center">
           <p>Specify deposit TRX amount here:</p>
-          <input placeholder="###" className="form-control text-center" />
-          <button className="btn btn-md bg-white w-100 mt-4">
+          <input
+            placeholder="###"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            className="form-control text-center"
+          />
+          <button
+            className="btn btn-md bg-white w-100 mt-4"
+            onClick={handleInvestment}
+          >
             MAKE DEPOSIT HERE
           </button>
         </Col>
