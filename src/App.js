@@ -371,9 +371,9 @@ function App() {
           <Description contract={contract} />
           <Guide />
           {/* Deposit Modal */}
-          <DepositModal isOpen={showDeposit} onToggle={handleShowDeposit} contract={contract} />
+          <DepositModal isOpen={showDeposit} onToggle={handleShowDeposit} contract={contract}/>
           {/* Statistics Modal */}
-          <StatisticsModal isOpen={showStat} onToggle={handleShowStat}/>
+          <StatisticsModal isOpen={showStat} onToggle={handleShowStat} contract={contract}/>
           <Contract />
         </div>
         <Contact />
