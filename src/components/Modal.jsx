@@ -1,5 +1,6 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import { Modal, Col, Row } from "react-bootstrap";
+import {toast} from 'react-toastify';
 import TronWebContext from "../contexts";
 import Constants from "../constants";
 
@@ -75,8 +76,33 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
   const [refBonus, setRefBonus] = useState(0);
   const [refWithDraw, setRefWithDraw] = useState(0);
   const [withDrawn, setWithrawn] = useState(0);
+  const refLink = useRef()
 
   const twc = useContext(TronWebContext);
+
+  const copyToClipBoard = async () => {
+    navigator.clipboard.writeText(refLink.current.textContent).then(() => {
+      toast("Referral link successfully copied!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+    }).catch(() => {
+      toast.error("Ooops! Failed to copy referral link.", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+    })
+  }
 
   const getDailyProfit = async () => {
     if (contract) {
@@ -290,10 +316,10 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
       <Modal.Footer className="bg-primary text-white border-top-0 p-3">
         <p className="w-100 text-center py-2">Your referral link:</p>
         <div className="w-100 col-9 mx-auto">
-          <button className="btn btn-md bg-white w-100 mb-3">
+          <button ref={refLink} className="btn btn-md bg-white w-100 mb-3">
             {window.location.origin}/?ref={twc && twc.defaultAddress.base58}
           </button>
-          <button className="btn btn-md bg-white w-100">
+          <button onClick={copyToClipBoard} className="btn btn-md bg-white w-100">
             COPY REFERRAL LINK
           </button>
         </div>

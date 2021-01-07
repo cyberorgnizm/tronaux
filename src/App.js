@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import AppNavbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Description from "./components/Description";
 import Guide from "./components/Guide";
-import {DepositModal, StatisticsModal} from "./components/Modal";
+import { DepositModal, StatisticsModal } from "./components/Modal";
 import Contact from "./components/Contact";
 import Contract from "./components/Contract";
 import TronWebContext from "./contexts";
@@ -354,7 +356,7 @@ function useTronWeb() {
 function App() {
   const [showDeposit, setShowDeposit] = useState(false);
   const [showStat, setShowStat] = useState(false);
-  
+
   const handleShowDeposit = () => setShowDeposit(!showDeposit);
   const handleShowStat = () => setShowStat(!showStat);
 
@@ -364,19 +366,31 @@ function App() {
 
   return (
     <>
-      <AppNavbar onToggleDeposit={handleShowDeposit} onToggleStat={handleShowStat} />
+      <AppNavbar
+        onToggleDeposit={handleShowDeposit}
+        onToggleStat={handleShowStat}
+      />
       <TronWebContext.Provider value={tronWeb && tronWeb}>
         <div className="mx-5 px-5">
           <Hero contract={contract} onToggleDeposit={handleShowDeposit} />
           <Description contract={contract} />
           <Guide />
           {/* Deposit Modal */}
-          <DepositModal isOpen={showDeposit} onToggle={handleShowDeposit} contract={contract}/>
+          <DepositModal
+            isOpen={showDeposit}
+            onToggle={handleShowDeposit}
+            contract={contract}
+          />
           {/* Statistics Modal */}
-          <StatisticsModal isOpen={showStat} onToggle={handleShowStat} contract={contract}/>
+          <StatisticsModal
+            isOpen={showStat}
+            onToggle={handleShowStat}
+            contract={contract}
+          />
           <Contract />
         </div>
         <Contact />
+        <ToastContainer/>
       </TronWebContext.Provider>
     </>
   );
