@@ -2,6 +2,7 @@ import {useContext, useEffect, useState} from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
 import TronWebContext from "../contexts";
 import Constants from "../constants";
+import laptopSvg from '../assets/laptop.svg'
 
 
 const descriptions = [
@@ -38,10 +39,11 @@ export default function Description({contract}) {
           <p className="text-center">THE BEST MARKET OFFER</p>
         </Col>
         <Col sm={5}>
-          <button className="btn btn-md btn-primary d-block mb-2 w-100">Working only with  TRON (TRX) network</button>
-          <button className="btn btn-md btn-primary d-block mb-2 w-100">Minimal deposit: 10 TRX</button>
-          <button className="btn btn-md btn-primary d-block mb-2 w-100">Total income: 300% (deposit included)</button>
-          <button className="btn btn-md btn-primary d-block mb-2 w-100">Earnings every moment, withdraw any time</button>
+          <img src={laptopSvg} alt="Latop SVG" />
+          <button className="btn btn-md btn-primary d-block mb-3 w-100">Working only with  TRON (TRX) network</button>
+          <button className="btn btn-md btn-primary d-block mb-3 w-100">Minimal deposit: 10 TRX</button>
+          <button className="btn btn-md btn-primary d-block mb-3 w-100">Total income: 300% (deposit included)</button>
+          <button className="btn btn-md btn-primary d-block mb-3 w-100">Earnings every moment, withdraw any time</button>
         </Col>
         <Col sm={6} className="offset-1">
           {descriptions.map(desc => (

@@ -70,7 +70,7 @@ export function DepositModal({ isOpen, onToggle, contract }) {
 export function StatisticsModal({ isOpen, onToggle, contract }) {
   const [balance, setBalance] = useState(0);
   const [balanceRate, setBalanceRate] = useState(0);
-  const [nowAvailable, setNowAvailable] = useState(0); 
+  const [nowAvailable, setNowAvailable] = useState(0);
   const [invested, setInvested] = useState(0);
   const [refBonus, setRefBonus] = useState(0);
   const [refWithDraw, setRefWithDraw] = useState(0);
@@ -101,68 +101,74 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
   };
 
   const getReferralBonus = async () => {
-    if(contract){
+    if (contract) {
       const { TRX_DIVIDER_AMOUNT } = Constants;
-      const res = await contract.getUserReferralBonus(twc.defaultAddress.base58).call();
+      const res = await contract
+        .getUserReferralBonus(twc.defaultAddress.base58)
+        .call();
       const amount = twc.toDecimal(res) / TRX_DIVIDER_AMOUNT;
       setRefBonus(amount);
     }
-  }
+  };
 
   const getReferralWithdrawal = async () => {
-    if(contract){
+    if (contract) {
       const { TRX_DIVIDER_AMOUNT } = Constants;
-      const res = await contract.getUserReferralWithdraw(twc.defaultAddress.base58).call();
+      const res = await contract
+        .getUserReferralWithdraw(twc.defaultAddress.base58)
+        .call();
       const amount = twc.toDecimal(res) / TRX_DIVIDER_AMOUNT;
       setRefWithDraw(amount);
     }
-  }
+  };
 
   const getTotalWithdrawn = async () => {
-    if(contract){
+    if (contract) {
       const { TRX_DIVIDER_AMOUNT } = Constants;
-      const res = await contract.getUserTotalWithdrawn(twc.defaultAddress.base58).call();
+      const res = await contract
+        .getUserTotalWithdrawn(twc.defaultAddress.base58)
+        .call();
       const amount = twc.toDecimal(res) / TRX_DIVIDER_AMOUNT;
       setWithrawn(amount);
     }
-  }
+  };
 
   const getTotalNowAvailableBalance = async () => {
-    if(contract){
+    if (contract) {
       const { TRX_DIVIDER_AMOUNT } = Constants;
-      const res = await contract.getUserAvailableBalanceForWithdrawal(twc.defaultAddress.base58).call();
+      const res = await contract
+        .getUserAvailableBalanceForWithdrawal(twc.defaultAddress.base58)
+        .call();
       const amount = twc.toDecimal(res) / TRX_DIVIDER_AMOUNT;
       setNowAvailable(amount);
     }
-  }
+  };
 
   const getContractBalanceRate = async () => {
-    if(contract){
+    if (contract) {
       const res = await contract.getContractBalanceRate().call();
       const amount = twc.toDecimal(res) / 10;
       setBalanceRate(amount);
     }
-  }
-
+  };
 
   // TRX withdrawal function
   const handleWithdrawal = async () => {
-    if(contract){
-      await contract.withdraw().send({callValue: 0});
+    if (contract) {
+      await contract.withdraw().send({ callValue: 0 });
     }
-  }
+  };
 
   useEffect(() => {
-    
-    getTotalInvested()
-    getReferralBonus()
-    getReferralWithdrawal()
-    getTotalWithdrawn()
-    getTotalNowAvailableBalance()
-    
+    getTotalInvested();
+    getReferralBonus();
+    getReferralWithdrawal();
+    getTotalWithdrawn();
+    getTotalNowAvailableBalance();
+
     const intvl = setInterval(() => {
       getDailyProfit();
-      getContractBalanceRate()
+      getContractBalanceRate();
     }, 2000);
 
     return () => {
@@ -200,28 +206,84 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
           </p>
         </Col>
         <Col sm={12}>
-          <div className="bg-white text-dark p-2 mb-3">
-            <p>Your current daily profit: {balanceRate}</p>
-          </div>
-          <div className="bg-white text-dark mb-3 p-2">
+          <div className="bg-white rounded text-dark px-4 mb-3">
             <Row>
-              <Col>
-                <p>Available withdraw balance: {balance}</p>
+              <Col className="my-3 border-right d-flex flex-column justify-content-center">
+                <span className="mb-2">Your current daily profit</span>
+                <strong className="text-primary">{balanceRate}</strong>
               </Col>
-              <Col>
-                <button className="btn btn-sm btn-primary" onClick={handleWithdrawal}>Withdraw</button>
+              <Col className="my-3 p-2 border-left d-flex flex-column justify-content-center">
+                <span>Basic profit: +1.0%</span>
+                <span>Hold-bonus: +0.1%</span>
+                <span>Contract bonus: +0.0%</span>
               </Col>
             </Row>
           </div>
-          <div className="bg-white text-dark mb-3 p-2">
-            <p>Total invested: {invested}</p>
+          <div className="bg-white rounded text-dark px-4 mb-3">
+            <Row>
+              <Col className="my-3 border-right d-flex flex-column justify-content-center">
+                <span className="mb-2">Available withdraw balance</span>
+                <strong className="text-primary">{balance}</strong>
+              </Col>
+              <Col className="my-3 p-2 border-left d-flex flex-column justify-content-center align-items-start">
+                <span className="mb-3">Request withdraw:</span>
+                <button
+                  className="btn btn-sm btn-primary w-50"
+                  onClick={handleWithdrawal}
+                >
+                  Withdraw
+                </button>
+              </Col>
+              <Col sm={12} className="px-3 py-2">
+                <small>
+                  Click Withdraw button, and you will get instantly all your
+                  deposits earnings and affiliate bonuses with a single
+                  transaction. Your personal hold-bonus will be reseted.
+                </small>
+              </Col>
+            </Row>
           </div>
-          <div className="bg-white text-dark mb-3 p-2 d-flex">
-            <p className="mr-4">Total earned: {nowAvailable + withDrawn + refWithDraw}</p>
-            <p>Total withdrawn: {withDrawn + refWithDraw}</p>
+          <div className="bg-white rounded text-dark mb-3 px-4">
+            <Row>
+              <Col className="my-3 border-right d-flex flex-column justify-content-center">
+                <span className="mb-2">Total invested</span>
+                <strong className="text-primary">{invested}</strong>
+              </Col>
+              <Col className="my-3 p-2 border-left d-flex flex-column justify-content-center align-items-start">
+                <span>Number of deposits: {1}</span>
+                <span>Last deposit date:</span>
+                <span>{Date.now()}</span>
+              </Col>
+            </Row>
           </div>
-          <div className="bg-white text-dark mb-3 p-2">
-            <p>Referral rewards: {refBonus +  refWithDraw}</p>
+          <div className="bg-white rounded text-dark mb-3 px-4">
+            <Row>
+              <Col className="my-3 border-right d-flex flex-column justify-content-center">
+                <span className="mb-2">Total earned</span>
+                <strong className="text-primary">
+                  {nowAvailable + withDrawn + refWithDraw}
+                </strong>
+              </Col>
+              <Col className="my-3 p-2 border-left d-flex flex-column justify-content-center align-items-start">
+                <span className="mb-2">Total withdrawn</span>
+                <strong className="text-primary">
+                  {withDrawn + refWithDraw}
+                </strong>
+              </Col>
+            </Row>
+          </div>
+          <div className="bg-white rounded text-dark mb-3 px-4">
+            <Row>
+              <Col className="my-3 border-right d-flex flex-column justify-content-center">
+                <span className="mb-2">Referral rewards</span>
+                <strong className="text-primary">{refBonus + refWithDraw}</strong>
+              </Col>
+              <Col className="my-3 p-2 border-left d-flex flex-column justify-content-center align-items-start">
+                <span>1st level: 0</span>
+                <span>2nd level: 0</span>
+                <span>3rd level: 0</span>
+              </Col>
+            </Row>
           </div>
         </Col>
       </Modal.Body>
