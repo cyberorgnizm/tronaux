@@ -17,7 +17,7 @@ export default function Hero({ contract, onToggleDeposit }) {
       const { TRX_DIVIDER_AMOUNT } = Constants;
       if (contract) {
         // obtain total invested amount
-        const totalInvestedResponse = await contract.getUserTotalDeposits(twc.defaultAddress.base58).call();
+        const totalInvestedResponse = await contract.totalInvested().call();
         setTotalInvested(
           parseInt(twc.toDecimal(totalInvestedResponse) / TRX_DIVIDER_AMOUNT)
         );
@@ -107,7 +107,7 @@ export default function Hero({ contract, onToggleDeposit }) {
           </p>
         </Col>
         <Col sm={6} className="my-3">
-          <p className="text-center w-50">Total investment amount (TRX)</p>
+          <p className="text-center w-50">Total invested amount (TRX)</p>
           <button className="btn btn-md btn-primary w-50 mb-3">
             {totalInvested}
           </button>

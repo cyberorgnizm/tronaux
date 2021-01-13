@@ -374,7 +374,7 @@ function App() {
         <div className="mx-5 px-5">
           <Hero contract={contract} onToggleDeposit={handleShowDeposit} />
           <Description contract={contract} />
-          <Guide />
+          <Guide contract={contract}/>
           {/* Deposit Modal */}
           <DepositModal
             isOpen={showDeposit}
@@ -389,8 +389,11 @@ function App() {
           />
           <Contract />
         </div>
-        <Contact />
-        <ToastContainer/>
+        <Contact
+          onToggleDeposit={handleShowDeposit}
+          onToggleStat={handleShowStat}
+        />
+        <ToastContainer />
       </TronWebContext.Provider>
     </>
   );

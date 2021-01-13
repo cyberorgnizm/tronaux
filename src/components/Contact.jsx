@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 
-export default function Contact() {
+export default function Contact({onToggleDeposit, onToggleStat}) {
   return (
     <Container fluid>
       <Row>
@@ -32,8 +32,8 @@ export default function Contact() {
               </div>
             </Col>
             <Col className="p-5">
-              <button className="btn btn-md bg-light w-100 mb-4">MAKE DEPOSIT</button>
-              <button className="btn btn-md bg-light w-100">WALLET STATISTIC</button>
+              <button onClick={onToggleDeposit} className="btn btn-md bg-light w-100 mb-4">MAKE DEPOSIT</button>
+              <button onClick={onToggleStat} className="btn btn-md bg-light w-100">WALLET STATISTIC</button>
             </Col>
           </Row>
         </div>

@@ -1,24 +1,29 @@
 import { useState, useContext, useEffect, useRef } from "react";
 import { Modal, Col, Row } from "react-bootstrap";
-import {toast} from 'react-toastify';
+import { toast } from "react-toastify";
 import TronWebContext from "../contexts";
 import Constants from "../constants";
 
 export function DepositModal({ isOpen, onToggle, contract }) {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState("");
+  const [showErr, setShowErr] = useState(false);
 
   const twc = useContext(TronWebContext);
 
   const handleInvestment = async () => {
     if (contract) {
       try {
+        if(amount === ""){
+          return
+        }
         const { TRX_DIVIDER_AMOUNT } = Constants;
         const amt = Math.floor(amount * TRX_DIVIDER_AMOUNT);
         await contract
           .invest(twc.defaultAddress.base58)
           .send({ callValue: amt });
+          setAmount("")
       } catch (error) {
-        alert(
+        toast.error(
           "An error occured, while trying to invest, please ensure your tronlink wallet in activated"
         );
       }
@@ -38,12 +43,21 @@ export function DepositModal({ isOpen, onToggle, contract }) {
         <Col sm={6} className="mx-auto text-center">
           <p>Specify deposit TRX amount here:</p>
           <input
-            placeholder="###"
+            placeholder="0"
             value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            onChange={(e) => {
+              setAmount(e.target.value)
+              if(Object.is(Number(e.target.value), NaN)){
+                setShowErr(true)
+                return
+              }
+              setShowErr(false)
+            }}
             className="form-control text-center"
           />
+          {showErr && <span className="text-danger">Please ensure you input numbers only</span>}
           <button
+            disabled={showErr}
             className="btn btn-md bg-white w-100 mt-4"
             onClick={handleInvestment}
           >
@@ -73,36 +87,41 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
   const [balanceRate, setBalanceRate] = useState(0);
   const [nowAvailable, setNowAvailable] = useState(0);
   const [invested, setInvested] = useState(0);
+  const [depositAmount, setDepositAmount] = useState(0);
+  const [depositTime, setDepositTime] = useState("");
   const [refBonus, setRefBonus] = useState(0);
   const [refWithDraw, setRefWithDraw] = useState(0);
   const [withDrawn, setWithrawn] = useState(0);
-  const refLink = useRef()
+  const refLink = useRef();
 
   const twc = useContext(TronWebContext);
 
   const copyToClipBoard = async () => {
-    navigator.clipboard.writeText(refLink.current.textContent).then(() => {
-      toast("Referral link successfully copied!", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
+    navigator.clipboard
+      .writeText(refLink.current.textContent)
+      .then(() => {
+        toast("Referral link successfully copied!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
         });
-    }).catch(() => {
-      toast.error("Ooops! Failed to copy referral link.", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
+      })
+      .catch(() => {
+        toast.error("Ooops! Failed to copy referral link.", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
         });
-    })
-  }
+      });
+  };
 
   const getDailyProfit = async () => {
     if (contract) {
@@ -119,7 +138,10 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
   const getTotalInvested = async () => {
     if (contract) {
       const { TRX_DIVIDER_AMOUNT } = Constants;
-      const res = await contract.totalInvested().call();
+      // obtain user total invested amount
+      const res = await contract
+        .getUserTotalDeposits(twc.defaultAddress.base58)
+        .call();
       const amount = twc.toDecimal(res) / TRX_DIVIDER_AMOUNT;
       setInvested(amount);
     }
@@ -178,6 +200,35 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
     }
   };
 
+  const getDepositInfo = async () => {
+    function getFormattedDate(date) {
+      const hour = ("0" + date.getUTCHours()).slice(-2);
+      const minute = ("0" + date.getUTCMinutes()).slice(-2);
+      const day = ("0" + date.getUTCDate()).slice(-2);
+      const month = ("0" + (date.getUTCMonth() + 1)).slice(-2);
+      const year = date.getUTCFullYear();
+      return hour + ":" + minute + " " + day + "." + month + "." + year;
+    }
+
+    if (contract) {
+      const res1 = await contract.getUserAmountOfDeposits(twc.defaultAddress.base58).call();
+      const deposit = twc.toDecimal(res1);
+      setDepositAmount(deposit);
+
+      const res2 = await contract
+        .getUserDepositInfo(twc.defaultAddress.base58, deposit - 1)
+        .call();
+      const userLastDepositTime = twc.toDecimal(res2[2]);
+      const userLastDepositTimeFormatted = getFormattedDate(
+        new Date(userLastDepositTime * 1000)
+      );
+
+      setDepositTime(userLastDepositTimeFormatted);
+    }
+  };
+
+  
+
   // TRX withdrawal function
   const handleWithdrawal = async () => {
     if (contract) {
@@ -191,6 +242,7 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
     getReferralWithdrawal();
     getTotalWithdrawn();
     getTotalNowAvailableBalance();
+    getDepositInfo();
 
     const intvl = setInterval(() => {
       getDailyProfit();
@@ -214,7 +266,11 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
       <Modal.Body className="bg-primary text-white border-top-0">
         <Col sm={8} className="mx-auto text-center">
           <p>Your TRN wallet address</p>
-          <input placeholder="###" className="form-control text-center" />
+          <input
+            placeholder=""
+            value={twc && twc.defaultAddress.base58}
+            className="form-control text-center"
+          />
         </Col>
         <Col sm={10} className="mx-auto">
           <p>
@@ -235,10 +291,10 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
           <div className="bg-white rounded text-dark px-4 mb-3">
             <Row>
               <Col className="my-3 border-right d-flex flex-column justify-content-center">
-                <span className="mb-2">Your current daily profit</span>
-                <strong className="text-primary">{balanceRate}</strong>
+                <span>Your current daily profit</span>
+                <strong className="text-primary h3">{`+${balanceRate.toFixed(1)}%`}</strong>
               </Col>
-              <Col className="my-3 p-2 border-left d-flex flex-column justify-content-center">
+              <Col className="my-3 p-2 px-4 border-left d-flex flex-column justify-content-center">
                 <span>Basic profit: +1.0%</span>
                 <span>Hold-bonus: +0.1%</span>
                 <span>Contract bonus: +0.0%</span>
@@ -248,10 +304,10 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
           <div className="bg-white rounded text-dark px-4 mb-3">
             <Row>
               <Col className="my-3 border-right d-flex flex-column justify-content-center">
-                <span className="mb-2">Available withdraw balance</span>
-                <strong className="text-primary">{balance}</strong>
+                <span>Available withdraw balance</span>
+                <strong className="text-primary h3">{balance}</strong>
               </Col>
-              <Col className="my-3 p-2 border-left d-flex flex-column justify-content-center align-items-start">
+              <Col className="my-3 p-2 px-4 border-left d-flex flex-column justify-content-center align-items-start">
                 <span className="mb-3">Request withdraw:</span>
                 <button
                   className="btn btn-sm btn-primary w-50"
@@ -272,27 +328,27 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
           <div className="bg-white rounded text-dark mb-3 px-4">
             <Row>
               <Col className="my-3 border-right d-flex flex-column justify-content-center">
-                <span className="mb-2">Total invested</span>
-                <strong className="text-primary">{invested}</strong>
+                <span>Total invested</span>
+                <strong className="text-primary h3">{invested}</strong>
               </Col>
-              <Col className="my-3 p-2 border-left d-flex flex-column justify-content-center align-items-start">
-                <span>Number of deposits: {1}</span>
+              <Col className="my-3 p-2 px-4 border-left d-flex flex-column justify-content-center align-items-start">
+                <span>Number of deposits: {depositAmount}</span>
                 <span>Last deposit date:</span>
-                <span>{Date.now()}</span>
+                <span>{depositTime}</span>
               </Col>
             </Row>
           </div>
           <div className="bg-white rounded text-dark mb-3 px-4">
             <Row>
               <Col className="my-3 border-right d-flex flex-column justify-content-center">
-                <span className="mb-2">Total earned</span>
-                <strong className="text-primary">
+                <span>Total earned</span>
+                <strong className="text-primary h3">
                   {nowAvailable + withDrawn + refWithDraw}
                 </strong>
               </Col>
-              <Col className="my-3 p-2 border-left d-flex flex-column justify-content-center align-items-start">
-                <span className="mb-2">Total withdrawn</span>
-                <strong className="text-primary">
+              <Col className="my-3 p-2 px-4 border-left d-flex flex-column justify-content-center align-items-start">
+                <span>Total withdrawn</span>
+                <strong className="text-primary h3">
                   {withDrawn + refWithDraw}
                 </strong>
               </Col>
@@ -301,10 +357,12 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
           <div className="bg-white rounded text-dark mb-3 px-4">
             <Row>
               <Col className="my-3 border-right d-flex flex-column justify-content-center">
-                <span className="mb-2">Referral rewards</span>
-                <strong className="text-primary">{refBonus + refWithDraw}</strong>
+                <span>Referral rewards</span>
+                <strong className="text-primary h3">
+                  {refBonus + refWithDraw}
+                </strong>
               </Col>
-              <Col className="my-3 p-2 border-left d-flex flex-column justify-content-center align-items-start">
+              <Col className="my-3 p-2 px-4 border-left d-flex flex-column justify-content-center align-items-start">
                 <span>1st level: 0</span>
                 <span>2nd level: 0</span>
                 <span>3rd level: 0</span>
@@ -319,7 +377,10 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
           <button ref={refLink} className="btn btn-md bg-white w-100 mb-3">
             {window.location.origin}/?ref={twc && twc.defaultAddress.base58}
           </button>
-          <button onClick={copyToClipBoard} className="btn btn-md bg-white w-100">
+          <button
+            onClick={copyToClipBoard}
+            className="btn btn-md bg-white w-100"
+          >
             COPY REFERRAL LINK
           </button>
         </div>

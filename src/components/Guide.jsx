@@ -1,13 +1,38 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { toast } from "react-toastify";
 import blueLogo from "../assets/tron-blue-vector.svg";
 import TronWebContext from "../contexts";
+import Constants from "../constants";
 
-export default function Guide() {
+export default function Guide({contract}) {
+  const [amount, setAmount] = useState("");
+  const [showErr, setShowErr] = useState(false);
+
   const twc = useContext(TronWebContext);
 
   // current user address
   const addr = twc && twc.defaultAddress.base58;
+
+  const handleInvestment = async () => {
+    if (contract) {
+      try {
+        if(amount === ""){
+          return
+        }
+        const { TRX_DIVIDER_AMOUNT } = Constants;
+        const amt = Math.floor(amount * TRX_DIVIDER_AMOUNT);
+        await contract
+          .invest(twc.defaultAddress.base58)
+          .send({ callValue: amt });
+          setAmount("")
+      } catch (error) {
+        toast.error(
+          "An error occured, while trying to invest, please ensure your tronlink wallet in activated"
+        );
+      }
+    }
+  };
 
   return (
     <Container fluid>
@@ -73,11 +98,21 @@ export default function Guide() {
           <img src={blueLogo} alt="Tron logo" />
           <p>Specify deposit TRX amount here:</p>
           <input
-            type="number"
-            className="form-control border border-primary d-block mb-4 w-100 text-center"
-            placeholder="###"
+            type="text"
+            value={amount}
+            onChange={(e) => {
+              setAmount(e.target.value)
+              if(Object.is(Number(e.target.value), NaN)){
+                setShowErr(true)
+                return
+              }
+              setShowErr(false)
+            }}
+            className="form-control border border-primary d-block mb-1 w-100 text-center"
+            placeholder="0"
           />
-          <button className="btn btn-md btn-primary d-block mb-5 w-100">
+          {showErr && <span className="text-danger d-block mb-3">Please ensure you input numbers only</span>}
+          <button disabled={showErr} onClick={handleInvestment} className="btn btn-md btn-primary d-block mb-5 w-100">
             MAKE DEPOSIT HERE
           </button>
           <p className="pt-5">Step #2: Get earnings</p>
