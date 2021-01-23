@@ -37,7 +37,7 @@ export default function Guide({contract}) {
   return (
     <Container fluid>
       <Row>
-        <Col sm={12} className="text-center my-3">
+        <Col id="investment" sm={12} className="text-center my-3">
           <p>How to work with the Platform</p>
           <p>Simple 3 steps to get Earnings</p>
         </Col>

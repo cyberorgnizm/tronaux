@@ -7,10 +7,10 @@ export default function AppNavbar({onToggleDeposit, onToggleStat}) {
     <Navbar className="py-2 navbar-dark bg-primary fixed-top shadow-lg">
       <Nav className="w-100 justify-content-around">
         <NavItem className="h5">
-          <NavLink active>About Us</NavLink>
+          <NavLink active href="#about">About Us</NavLink>
         </NavItem>
         <NavItem className="h5 mr-3">
-          <NavLink active>Investment</NavLink>
+          <NavLink active href="#investment">Investment</NavLink>
         </NavItem>
         <NavItem>
           <NavLink>

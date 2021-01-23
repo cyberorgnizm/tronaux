@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import whiteLogo from "../assets/tron-white-vector.svg";
 import blueLogo from "../assets/tron-blue-vector.svg";
@@ -9,8 +9,20 @@ import Constants from "../constants";
 export default function Hero({ contract, onToggleDeposit }) {
   const [totalInvested, setTotalInvested] = useState("###");
   const [totalParticipants, setTotalParticipants] = useState("###");
+  const refLink = useRef();
 
   const twc = useContext(TronWebContext);
+
+  const copyToClipBoard = async () => {
+    navigator.clipboard
+      .writeText(refLink.current.dataset.referral)
+      .then(() => {
+        alert("Referral link successfully copied!");
+      })
+      .catch(() => {
+        alert("Ooops! Failed to copy referral link.");
+      });
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -67,7 +79,7 @@ export default function Hero({ contract, onToggleDeposit }) {
           <button className="btn btn-md btn-primary d-block w-100 my-3" onClick={onToggleDeposit}>
             MAKE INVESTMENT NOW
           </button>
-          <button className="btn btn-md btn-primary d-block w-100">
+          <button ref={refLink} data-referral={`${window.location.origin}/?ref=${twc && twc.defaultAddress.base58}`} className="btn btn-md btn-primary d-block w-100" onClick={copyToClipBoard}>
             COPY REFERRAL LINK
           </button>
         </Col>

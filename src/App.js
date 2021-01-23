@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import AppNavbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Description from "./components/Description";
@@ -393,7 +391,6 @@ function App() {
           onToggleDeposit={handleShowDeposit}
           onToggleStat={handleShowStat}
         />
-        <ToastContainer />
       </TronWebContext.Provider>
     </>
   );

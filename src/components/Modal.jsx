@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect, useRef } from "react";
 import { Modal, Col, Row } from "react-bootstrap";
-import { toast } from "react-toastify";
 import TronWebContext from "../contexts";
 import Constants from "../constants";
 
@@ -23,9 +22,7 @@ export function DepositModal({ isOpen, onToggle, contract }) {
           .send({ callValue: amt });
           setAmount("")
       } catch (error) {
-        toast.error(
-          "An error occured, while trying to invest, please ensure your tronlink wallet in activated"
-        );
+        alert("An error occured, while trying to invest, please ensure your tronlink wallet in activated");
       }
     }
   };
@@ -84,7 +81,11 @@ export function DepositModal({ isOpen, onToggle, contract }) {
 
 export function StatisticsModal({ isOpen, onToggle, contract }) {
   const [balance, setBalance] = useState(0);
-  const [balanceRate, setBalanceRate] = useState(0);
+  // percentage rates
+  const [userPercentRate, setUserPercentRate] = useState(0);
+  const [contractBalanceRate, setContractBalanceRate] = useState(0);
+  const basicPercentRate = 1;
+  // end percentage rate
   const [nowAvailable, setNowAvailable] = useState(0);
   const [invested, setInvested] = useState(0);
   const [depositAmount, setDepositAmount] = useState(0);
@@ -100,26 +101,10 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
     navigator.clipboard
       .writeText(refLink.current.textContent)
       .then(() => {
-        toast("Referral link successfully copied!", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        alert("Referral link successfully copied!");
       })
       .catch(() => {
-        toast.error("Ooops! Failed to copy referral link.", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        alert("Ooops! Failed to copy referral link.");
       });
   };
 
@@ -195,10 +180,19 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
   const getContractBalanceRate = async () => {
     if (contract) {
       const res = await contract.getContractBalanceRate().call();
-      const amount = twc.toDecimal(res) / 10;
-      setBalanceRate(amount);
+      const amount = (twc.toDecimal(res) - 10) / 10;
+      setContractBalanceRate(amount.toFixed(1));
     }
   };
+
+  const getUserPercentRate = async () => {
+    if (contract) {
+      const res = await contract.getUserPercentRate(twc.defaultAddress.base58).call();
+      const amount = twc.toDecimal(res) / 10;
+      setUserPercentRate(amount.toFixed(1));
+    }
+  };
+
 
   const getDepositInfo = async () => {
     function getFormattedDate(date) {
@@ -247,12 +241,18 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
     const intvl = setInterval(() => {
       getDailyProfit();
       getContractBalanceRate();
+      getUserPercentRate();
     }, 2000);
 
     return () => {
       clearInterval(intvl);
     };
   });
+
+  const getHoldBonus = () => {
+    const bonus = userPercentRate - contractBalanceRate - basicPercentRate.toFixed(1);
+    return bonus >= 0 ? `+${bonus.toFixed(1)}` : `+0`;
+  }
 
   return (
     <Modal size="lg" show={isOpen} onHide={onToggle}>
@@ -292,12 +292,12 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
             <Row>
               <Col className="my-3 border-right d-flex flex-column justify-content-center">
                 <span>Your current daily profit</span>
-                <strong className="text-primary h3">{`+${balanceRate.toFixed(1)}%`}</strong>
+                <strong className="text-primary h3">{`+${userPercentRate}%`}</strong>
               </Col>
               <Col className="my-3 p-2 px-4 border-left d-flex flex-column justify-content-center">
-                <span>Basic profit: +1.0%</span>
-                <span>Hold-bonus: +0.1%</span>
-                <span>Contract bonus: +0.0%</span>
+                <span>Basic profit: +{basicPercentRate.toFixed(1)}%</span>
+                <span>Hold-bonus: {getHoldBonus()}%</span>
+                <span>Contract bonus: +{contractBalanceRate}%</span>
               </Col>
             </Row>
           </div>

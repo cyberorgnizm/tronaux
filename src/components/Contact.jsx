@@ -2,7 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 export default function Contact({onToggleDeposit, onToggleStat}) {
   return (
-    <Container fluid>
+    <Container fluid id="about">
       <Row>
         <Col sm={12} className="text-center">
           <p>CONTACT US</p>
