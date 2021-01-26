@@ -48,12 +48,12 @@ export default function Hero({ contract, onToggleDeposit }) {
   return (
     <Container fluid className="pt-5">
       <Row className="mt-5">
-        <Col sm={7} className="text-center">
+        <Col xs={11} sm={10} lg={6} className="text-center mb-4">
           <p>300%</p>
           <img src={cash} alt="Tron cashout" className="w-50" />
         </Col>
-        <Col>
-          <p>Reliable Investments with</p>
+        <Col xs={11} sm={10} lg={4} className="mx-auto mb-5">
+          <p className="h5">Reliable Investments with</p>
           <div>
             <img
               src={whiteLogo}
@@ -83,13 +83,13 @@ export default function Hero({ contract, onToggleDeposit }) {
             COPY REFERRAL LINK
           </button>
         </Col>
-        <Col sm={12} className="text-center my-5">
-          <span className="d-block">We will triple your funds</span>
-          <span className="d-block">without any risk</span>
+        <Col xs={11} sm={10} className="mx-auto text-center mb-4">
+          <span className="d-block h5">We will triple your funds</span>
+          <span className="d-block h5">without any risk</span>
         </Col>
       </Row>
       <Row>
-        <Col sm={6} className="text-center">
+        <Col xs={11} sm={5} className="text-center mx-auto mb-4">
           <p className="font-weight-bold">
             Unlimited earnings with always growing rates
           </p>
@@ -100,7 +100,7 @@ export default function Hero({ contract, onToggleDeposit }) {
             deposit
           </p>
         </Col>
-        <Col sm={6} className="text-center">
+        <Col xs={11} sm={5} className="text-center mx-auto mb-4">
           <p className="font-weight-bold">
             Worldwide legal company with professional team
           </p>
@@ -111,20 +111,20 @@ export default function Hero({ contract, onToggleDeposit }) {
             your profit!
           </p>
         </Col>
-        <Col sm={8} className="text-center mx-auto my-3">
-          <p>Reliability of TRX smart-contract. Scam is impossible!</p>
+        <Col xs={11} sm={8} className="text-center mx-auto mb-4">
+          <p className="font-weight-bold">Reliability of TRX smart-contract. Scam is impossible!</p>
           <p>
             Smart-contract technology ensures full safety of all participants
             funds. Nobody can steal funds, or change contract functions.
           </p>
         </Col>
-        <Col sm={6} className="my-3">
-          <p className="text-center w-50">Total invested amount (TRX)</p>
-          <button className="btn btn-md btn-primary w-50 mb-3">
+        <Col xs={11} sm={11} className="mx-auto mb-4">
+          <p className="font-weight-bold">Total invested amount (TRX)</p>
+          <button style={{width: '200px'}}className="btn btn-md btn-primary mb-3 mx-auto">
             {totalInvested}
           </button>
-          <p className="text-center w-50">Total active participants</p>
-          <button className="btn btn-md btn-primary w-50 mb-5">{totalParticipants}</button>
+          <p className="font-weight-bold">Total active participants</p>
+          <button style={{width: '200px'}}className="btn btn-md btn-primary mb-5">{totalParticipants}</button>
         </Col>
       </Row>
     </Container>

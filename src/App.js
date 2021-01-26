@@ -369,7 +369,6 @@ function App() {
         onToggleStat={handleShowStat}
       />
       <TronWebContext.Provider value={tronWeb && tronWeb}>
-        <div className="mx-5 px-5">
           <Hero contract={contract} onToggleDeposit={handleShowDeposit} />
           <Description contract={contract} />
           <Guide contract={contract}/>
@@ -386,7 +385,6 @@ function App() {
             contract={contract}
           />
           <Contract />
-        </div>
         <Contact
           onToggleDeposit={handleShowDeposit}
           onToggleStat={handleShowStat}

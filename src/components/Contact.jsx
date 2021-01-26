@@ -3,10 +3,10 @@ import { Container, Row, Col } from "react-bootstrap";
 export default function Contact({onToggleDeposit, onToggleStat}) {
   return (
     <Container fluid id="about">
-      <Row>
-        <Col sm={12} className="text-center">
-          <p>CONTACT US</p>
-          <p>OUR SUPPORT TEAM 24/7 AVAILABLE</p>
+      <Row className="mt-4">
+        <Col xs={11} className="text-center mx-auto">
+          <p className="h5">CONTACT US</p>
+          <p className="font-weight-bold">OUR SUPPORT TEAM 24/7 AVAILABLE</p>
         </Col>
         <Col sm={12} className="text-center mb-5 mt-5">
           <button className="btn btn-md btn-primary rounded">

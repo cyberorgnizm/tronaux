@@ -37,14 +37,14 @@ export default function Guide({contract}) {
   return (
     <Container fluid>
       <Row>
-        <Col id="investment" sm={12} className="text-center my-3">
-          <p>How to work with the Platform</p>
+        <Col id="investment" sm={12} className="text-center mt-5 mb-3">
+          <p className="h5">How to work with the Platform</p>
           <p>Simple 3 steps to get Earnings</p>
         </Col>
-        <Col className="text-center">
-          <p>Step #1: Make deposit</p>
-          <Row>
-            <Col className="bg-primary text-white p-3 mr-1 rounded">
+        <Col xs={11} sm={5} className="text-center mx-auto">
+          <p className="font-weight-bold">Step #1: Make deposit</p>
+          <Row className="mb-2">
+            <Col xs={11} sm={5} className="bg-primary text-white p-3 mr-1 mb-4 rounded mx-auto">
               <p>GET TRON (TRX)</p>
               <p className="text-left">
                 We recommend to use: TronLink / TronMask browsers extensions, or
@@ -55,7 +55,7 @@ export default function Guide({contract}) {
                 HOW TO GET TRX
               </button>
             </Col>
-            <Col className="bg-primary text-white p-3 ml-1 rounded">
+            <Col xs={11} sm={5} className="bg-primary text-white p-3 ml-1 mb-4 rounded mx-auto">
               <span>SEND TRX TO OUR SMART-CONTRACT</span>
               <p className="text-left">
                 Send any amount of TRX on smart-contract address and start to
@@ -76,8 +76,8 @@ export default function Guide({contract}) {
             CHECK WALLET STATISTICS
           </button>
 
-          <p>Step #3: Request withdraw</p>
-          <Col className="px-0">
+          <p className="font-weight-bold">Step #3: Request withdraw</p>
+          <Col className="px-0 mb-5">
             <div className="bg-primary text-white text-left p-3 rounded">
               <span className="d-block mb-1">REQUEST TRX WITHDRAW </span>
               <span className="d-block mb-1">
@@ -94,7 +94,7 @@ export default function Guide({contract}) {
             </div>
           </Col>
         </Col>
-        <Col className="text-center">
+        <Col xs={11} sm={5} className="text-center mx-auto">
           <img src={blueLogo} alt="Tron logo" />
           <p>Specify deposit TRX amount here:</p>
           <input
@@ -112,10 +112,10 @@ export default function Guide({contract}) {
             placeholder="0"
           />
           {showErr && <span className="text-danger d-block mb-3">Please ensure you input numbers only</span>}
-          <button disabled={showErr} onClick={handleInvestment} className="btn btn-md btn-primary d-block mb-5 w-100">
+          <button disabled={showErr} onClick={handleInvestment} className="btn btn-md btn-primary d-block mt-3 mb-5 w-100">
             MAKE DEPOSIT HERE
           </button>
-          <p className="pt-5">Step #2: Get earnings</p>
+          <p className="font-weight-bold">Step #2: Get earnings</p>
           <Row>
             <Col>
               <div className="bg-primary text-white p-3 rounded">
