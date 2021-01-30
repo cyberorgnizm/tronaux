@@ -4,3 +4,19 @@ $theme-colors: (
 );
 
 @import "~bootstrap/scss/bootstrap.scss";
+
+// ===================
+// bootstrap overrides
+// ===================
+
+.shadow-lg{
+  box-shadow: 0px 7px 15px -3.86755px #000000 !important;
+}
+
+.shadow-lg:hover{
+  box-shadow: none !important;
+}
+
+.border-bottom{
+  border-width: 4px !important;
+}

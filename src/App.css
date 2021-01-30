@@ -1,38 +1,69 @@
-.App {
+.navbar-nav .nav-item .nav-link {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+}
+
+#hero-description {
+  background: #05299e;
+  border-radius: 35px;
+  padding: 20px 50px;
+}
+
+#hero-description .summary {
+  all: unset;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  display: block;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#hero-description .logo {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 35.3429px;
+  line-height: 41px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#hero-description .description-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16.3121px;
+  line-height: 19px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.section-title {
+  display: block !important;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 44px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
 }
 
-.App-link {
-  color: #61dafb;
+.section-sub-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  text-transform: uppercase;
+  line-height: 26px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.column-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: 0.05em;
 }

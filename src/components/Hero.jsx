@@ -46,51 +46,59 @@ export default function Hero({ contract, onToggleDeposit }) {
   }, [contract, twc]);
 
   return (
-    <Container fluid className="pt-5">
+    <Container fluid className="pt-5 mt-md-5">
       <Row className="mt-5">
-        <Col xs={11} sm={10} lg={6} className="text-center mb-4">
-          <p>300%</p>
-          <img src={cash} alt="Tron cashout" className="w-50" />
+        <Col xs={11} sm={10} lg={5} className="text-center mb-4 mx-auto">
+          <p className="h4 mt-3 mb-5 text-primary">200%</p>
+          <img src={cash} alt="Tron cashout" height="250" width="450" style={{alignSelf: 'center'}} />
         </Col>
-        <Col xs={11} sm={10} lg={4} className="mx-auto mb-5">
-          <p className="h5">Reliable Investments with</p>
-          <div>
-            <img
-              src={whiteLogo}
-              alt="Tron crypto logo"
-              className="bg-primary rounded-circle p-1 mr-1"
-            />
-            <span>Tron</span>
-          </div>
-          <p className="border-bottom">GET +300% UP TO YPUR DEPOSITE</p>
-          <div>
-            <span className="d-block">
-              Blockchain decentrilize and Anonymouse platform
-            </span>
-            <div>
-              <span>Total secure income base on</span>
-              <img src={blueLogo} alt="Tron logo" width="20" height="15" />
-              <span>TRX smart contract</span>
+        <Col xs={11} sm={10} lg={5} className="mx-auto mb-5">
+          <div id="hero-description" className="bg-primary text-white">
+            <p className="summary">A FINANCIAL SYSTEM BUILT ON SMART CONTRACT TECHNOLOGY.</p>
+            <p className="summary">OPEN TO ALL, RELIABLE  AND TRANSPARENT TO ALL. </p>
+            <div className="logo">
+              <img
+                src={whiteLogo}
+                alt="Tron crypto logo"
+                width="35"
+                height="36"
+                className="p-1 mr-1"
+              />
+              <span>Tron</span>
             </div>
-            <span className="d-block">
-              Smart contract-verified and audited by independent company
-            </span>
+            <p className="border-bottom my-2">GET +200% UP TO YOUR DEPOSITE</p>
+            <div className="description-text">
+              <span className="d-block">
+                Blockchain decentrilize and Anonymouse platform
+              </span>
+              <div>
+                <span>Total secure income base on</span>
+                <span className="bg-white p-1 mx-1 rounded-circle">
+                  <img src={blueLogo} alt="Tron logo" width="20" height="15" />
+                </span>
+                <span>TRX smart contract</span>
+              </div>
+              <span className="d-block">
+                Smart contract-verified and audited by independent company
+              </span>
+            </div>
+            <button className="btn btn-md bg-white rounded-pill shadow-lg text-primary font-weight-bold d-block w-100 my-3" onClick={onToggleDeposit}>
+              MAKE INVESTMENT NOW
+            </button>
+            <button ref={refLink} data-referral={`${window.location.origin}/?ref=${twc && twc.defaultAddress.base58}`} className="btn btn-md bg-white rounded-pill shadow-lg text-primary font-weight-bold d-block w-100" onClick={copyToClipBoard}>
+              COPY REFERRAL LINK
+            </button>
+            <p className="text-center mt-3 border-bottom">Check TronAuxilary Smart contract</p>
           </div>
-          <button className="btn btn-md btn-primary d-block w-100 my-3" onClick={onToggleDeposit}>
-            MAKE INVESTMENT NOW
-          </button>
-          <button ref={refLink} data-referral={`${window.location.origin}/?ref=${twc && twc.defaultAddress.base58}`} className="btn btn-md btn-primary d-block w-100" onClick={copyToClipBoard}>
-            COPY REFERRAL LINK
-          </button>
         </Col>
-        <Col xs={11} sm={10} className="mx-auto text-center mb-4">
-          <span className="d-block h5">We will triple your funds</span>
-          <span className="d-block h5">without any risk</span>
+        <Col xs={11} sm={10} className="mx-auto text-center d-flex flex-column mb-5">
+          <span className="d-block section-title">We will triple your funds</span>
+          <span className="d-block section-sub-title">without any risk</span>
         </Col>
       </Row>
       <Row>
         <Col xs={11} sm={5} className="text-center mx-auto mb-4">
-          <p className="font-weight-bold">
+          <p className="column-title">
             Unlimited earnings with always growing rates
           </p>
           <p>
@@ -101,7 +109,7 @@ export default function Hero({ contract, onToggleDeposit }) {
           </p>
         </Col>
         <Col xs={11} sm={5} className="text-center mx-auto mb-4">
-          <p className="font-weight-bold">
+          <p className="column-title">
             Worldwide legal company with professional team
           </p>
           <p>
@@ -112,7 +120,7 @@ export default function Hero({ contract, onToggleDeposit }) {
           </p>
         </Col>
         <Col xs={11} sm={8} className="text-center mx-auto mb-4">
-          <p className="font-weight-bold">Reliability of TRX smart-contract. Scam is impossible!</p>
+          <p className="column-title">Reliability of TRX smart-contract. Scam is impossible!</p>
           <p>
             Smart-contract technology ensures full safety of all participants
             funds. Nobody can steal funds, or change contract functions.
