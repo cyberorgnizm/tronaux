@@ -1,5 +1,7 @@
 const TRX_DIVIDER_AMOUNT = 1000000
 
-export default {
+const constants = {
     TRX_DIVIDER_AMOUNT
 }
+
+export default constants;

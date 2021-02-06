@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect, useRef } from "react";
 import { Modal, Col, Row } from "react-bootstrap";
+import whiteLogo from "../assets/tron-white-vector.svg";
 import TronWebContext from "../contexts";
 import Constants from "../constants";
 
@@ -12,17 +13,19 @@ export function DepositModal({ isOpen, onToggle, contract }) {
   const handleInvestment = async () => {
     if (contract) {
       try {
-        if(amount === ""){
-          return
+        if (amount === "") {
+          return;
         }
         const { TRX_DIVIDER_AMOUNT } = Constants;
         const amt = Math.floor(amount * TRX_DIVIDER_AMOUNT);
         await contract
           .invest(twc.defaultAddress.base58)
           .send({ callValue: amt });
-          setAmount("")
+        setAmount("");
       } catch (error) {
-        alert("An error occured, while trying to invest, please ensure your tronlink wallet in activated");
+        alert(
+          "An error occured, while trying to invest, please ensure your tronlink wallet in activated"
+        );
       }
     }
   };
@@ -43,16 +46,20 @@ export function DepositModal({ isOpen, onToggle, contract }) {
             placeholder="0"
             value={amount}
             onChange={(e) => {
-              setAmount(e.target.value)
-              if(Object.is(Number(e.target.value), NaN)){
-                setShowErr(true)
-                return
+              setAmount(e.target.value);
+              if (Object.is(Number(e.target.value), NaN)) {
+                setShowErr(true);
+                return;
               }
-              setShowErr(false)
+              setShowErr(false);
             }}
             className="form-control text-center"
           />
-          {showErr && <span className="text-danger">Please ensure you input numbers only</span>}
+          {showErr && (
+            <span className="text-danger">
+              Please ensure you input numbers only
+            </span>
+          )}
           <button
             disabled={showErr}
             className="btn btn-md bg-white w-100 mt-4"
@@ -187,12 +194,13 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
 
   const getUserPercentRate = async () => {
     if (contract) {
-      const res = await contract.getUserPercentRate(twc.defaultAddress.base58).call();
+      const res = await contract
+        .getUserPercentRate(twc.defaultAddress.base58)
+        .call();
       const amount = twc.toDecimal(res) / 10;
       setUserPercentRate(amount.toFixed(1));
     }
   };
-
 
   const getDepositInfo = async () => {
     function getFormattedDate(date) {
@@ -205,7 +213,9 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
     }
 
     if (contract) {
-      const res1 = await contract.getUserAmountOfDeposits(twc.defaultAddress.base58).call();
+      const res1 = await contract
+        .getUserAmountOfDeposits(twc.defaultAddress.base58)
+        .call();
       const deposit = twc.toDecimal(res1);
       setDepositAmount(deposit);
 
@@ -220,8 +230,6 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
       setDepositTime(userLastDepositTimeFormatted);
     }
   };
-
-  
 
   // TRX withdrawal function
   const handleWithdrawal = async () => {
@@ -250,9 +258,10 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
   });
 
   const getHoldBonus = () => {
-    const bonus = userPercentRate - contractBalanceRate - basicPercentRate.toFixed(1);
+    const bonus =
+      userPercentRate - contractBalanceRate - basicPercentRate.toFixed(1);
     return bonus >= 0 ? `+${bonus.toFixed(1)}` : `+0`;
-  }
+  };
 
   return (
     <Modal size="lg" show={isOpen} onHide={onToggle}>
@@ -384,6 +393,57 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
             COPY REFERRAL LINK
           </button>
         </div>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+export function InvestModal({ isOpen, onToggle }) {
+  return (
+    <Modal size="lg" show={isOpen} onHide={onToggle}>
+      <Modal.Header
+        toggle={onToggle}
+        closeButton
+        className="bg-primary text-white border-bottom-0 p-5"
+      >
+        <p className="border-top pt-3 w-100">
+          <strong>IMPORTANT!</strong> Do not forget about blockchain fee! You
+          should have 2-5 TRX more on your wallet, or your transaction will get
+          out of energy status!
+        </p>
+      </Modal.Header>
+      <Modal.Body className="bg-primary text-white border-top-0 p-5">
+        <Row>
+          <Col sm={5} className="mx-auto">
+            <p className="h5">How to invest on mobile?</p>
+            <p>
+              You can download Banko Wallet, Math Wallet or TronWallet app from
+              application store. After the installation, you can create a new
+              TRX wallet or import an existing TRX wallet, and then transfer the
+              TRX from the exchange to the wallet. Finally, find Bank of TRON
+              within the wallet app or browse our site with the browser in the
+              app, and then go to invest or withdraw
+            </p>
+          </Col>
+          <Col sm={5} className="mx-auto text-center">
+            <img src={whiteLogo} alt="white logo" height="126" width="117" />
+          </Col>
+        </Row>
+      </Modal.Body>
+      <Modal.Footer className="bg-primary text-white border-top-0 p-3">
+        <Col sm={5} className="mx-auto text-center">
+          <img src={whiteLogo} alt="white logo" height="126" width="117" />
+        </Col>
+        <Col sm={5} className="mx-auto">
+          <p className="h5">How to invest on mobile?</p>
+          <p>
+            You can install the TronLink or TronPay extension on Chrome. After
+            the installation, you can create a new TRX wallet or import an
+            existing TRX wallet, and then transfer the TRX from the exchange to
+            the wallet. Finally, login on TronLink or TronPay to browse this
+            website and invest.
+          </p>
+        </Col>
       </Modal.Footer>
     </Modal>
   );

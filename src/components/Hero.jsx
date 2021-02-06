@@ -119,20 +119,19 @@ export default function Hero({ contract, onToggleDeposit }) {
             your profit!
           </p>
         </Col>
-        <Col xs={11} sm={8} className="text-center mx-auto mb-4">
-          <p className="column-title">Reliability of TRX smart-contract. Scam is impossible!</p>
-          <p>
-            Smart-contract technology ensures full safety of all participants
-            funds. Nobody can steal funds, or change contract functions.
+        <Col xs={11} sm={6} className="text-center mx-auto mb-4">
+          <p className="column-title">Reliability of TRX smart-contract.<br/> Scam is impossible!</p>
+          <p className="col-sm-8 mx-auto">
+          TRON AUXILARY runs automatically on the blockchain and  SMART-CONTRACT technology ensures full safety of all participants funds. Nobody can steal funds, delete or change contract functions.
           </p>
         </Col>
         <Col xs={11} sm={11} className="mx-auto mb-4">
-          <p className="font-weight-bold">Total invested amount (TRX)</p>
-          <button style={{width: '200px'}}className="btn btn-md btn-primary mb-3 mx-auto">
+          <p className="button-title-text">Total invested amount (TRX)</p>
+          <button className="btn btn-md btn-primary btn-action-primary mb-3 mx-auto">
             {totalInvested}
           </button>
-          <p className="font-weight-bold">Total active participants</p>
-          <button style={{width: '200px'}}className="btn btn-md btn-primary mb-5">{totalParticipants}</button>
+          <p className="button-title-text">Total active participants</p>
+          <button className="btn btn-md btn-primary btn-action-primary mb-5">{totalParticipants}</button>
         </Col>
       </Row>
     </Container>

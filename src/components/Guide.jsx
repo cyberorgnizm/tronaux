@@ -37,64 +37,62 @@ export default function Guide({contract}) {
   return (
     <Container fluid>
       <Row>
-        <Col id="investment" sm={12} className="text-center mt-5 mb-3">
-          <p className="h5">How to work with the Platform</p>
-          <p>Simple 3 steps to get Earnings</p>
+        <Col id="investment" sm={12} className="text-center mt-5 mb-5">
+          <p className="text-center text-primary section-title">How to work with the Platform</p>
+          <p className="text-center text-primary section-sub-title">Simple 3 steps to get Earnings</p>
         </Col>
-        <Col xs={11} sm={5} className="text-center mx-auto">
+        <Col xs={11} sm={5} className="text-center mx-auto mt-4">
           <p className="font-weight-bold">Step #1: Make deposit</p>
           <Row className="mb-2">
-            <Col xs={11} sm={5} className="bg-primary text-white p-3 mr-1 mb-4 rounded mx-auto">
-              <p>GET TRON (TRX)</p>
-              <p className="text-left">
+            <Col xs={11} sm={5} className="bg-primary text-white mr-1 mb-4 px-0 pt-3 rounded mx-auto">
+              <p className="pt-2 pb-3 px-3 border-top">GET TRON (TRX)</p>
+              <p className="text-left px-3 my-4">
                 We recommend to use: TronLink / TronMask browsers extensions, or
                 TronWallet / Banko mobile apps. You can get TRX coins via
                 popular exchangers.
               </p>
-              <button className="btn btn-md bg-white w-100 mt-2">
+              <button className="btn btn-md bg-white text-primary d-block my-4 mx-auto px-5 rounded-pill">
                 HOW TO GET TRX
               </button>
             </Col>
-            <Col xs={11} sm={5} className="bg-primary text-white p-3 ml-1 mb-4 rounded mx-auto">
-              <span>SEND TRX TO OUR SMART-CONTRACT</span>
-              <p className="text-left">
+            <Col xs={11} sm={5} className="bg-primary text-white mr-1 mb-4 px-0 pt-3 rounded mx-auto">
+              <p className="pt-2 pb-1 px-3 border-top">SEND TRX TO OUR SMART-CONTRACT</p>
+              <p className="text-left px-3">
                 Send any amount of TRX on smart-contract address and start to
                 get earnings every moment. Minimal deposit amount is 10 TRX. No
                 maximal amount.
               </p>
-              <button className="btn btn-md bg-white w-100">
+              <button className="btn btn-md bg-white text-primary d-block my-4 mx-auto px-5 rounded-pill">
                 MAKE DEPOSIT
               </button>
             </Col>
           </Row>
           <img src={blueLogo} alt="Tron logo" className="mt-4" />
           <p>Your TRX wallet address:</p>
-          <button className="btn btn-md border border-primary d-block mb-4 w-100">
+          <button className="btn btn-md btn-border-primary d-block mb-3 mx-auto">
             {addr || "###"}
           </button>
-          <button className="btn btn-md btn-primary d-block mb-5 w-100">
+          <button className="btn btn-md btn-primary btn-action-primary d-block mb-3 mx-auto">
             CHECK WALLET STATISTICS
           </button>
 
           <p className="font-weight-bold">Step #3: Request withdraw</p>
-          <Col className="px-0 mb-5">
-            <div className="bg-primary text-white text-left p-3 rounded">
-              <span className="d-block mb-1">REQUEST TRX WITHDRAW </span>
-              <span className="d-block mb-1">
+          <Col md={9} className="bg-primary text-white mb-4 px-0 pt-3 pb-4 rounded mx-auto">
+              <p className="pt-2 pb-3 px-3 border-top">REQUEST TRX WITHDRAW </p>
+              <p className="text-left d-block mb-1 px-4">
                 Your payout will come instantly
-              </span>
-              <span className="d-block mb-1">
+              </p>
+              <p className="text-left d-block mb-1 px-4">
                 Request withdraw from the same wallet you deposited
-              </span>
-              <span className="d-block my-3">
+              </p>
+              <p className="text-left d-block my-3 px-4">
               All your
                 wallet deposits and referral earnings will be withdrawn with
                 single transaction per 1 request
-              </span>
-            </div>
+              </p>
           </Col>
         </Col>
-        <Col xs={11} sm={5} className="text-center mx-auto">
+        <Col xs={11} sm={5} className="text-center mx-auto mt-4">
           <img src={blueLogo} alt="Tron logo" />
           <p>Specify deposit TRX amount here:</p>
           <input
@@ -108,19 +106,18 @@ export default function Guide({contract}) {
               }
               setShowErr(false)
             }}
-            className="form-control border border-primary d-block mb-1 w-100 text-center"
+            className="form-control input-border-primary d-block mb-3 text-center mx-auto"
             placeholder="0"
           />
           {showErr && <span className="text-danger d-block mb-3">Please ensure you input numbers only</span>}
-          <button disabled={showErr} onClick={handleInvestment} className="btn btn-md btn-primary d-block mt-3 mb-5 w-100">
+          <button disabled={showErr} onClick={handleInvestment} className="btn btn-md btn-action-primary text-white d-block mb-3 mx-auto">
             MAKE DEPOSIT HERE
           </button>
           <p className="font-weight-bold">Step #2: Get earnings</p>
           <Row>
-            <Col>
-              <div className="bg-primary text-white p-3 rounded">
-                <p>GET YOUR TRX EVERY MOMENT</p>
-                <p className="text-left">
+            <Col md={9} className="bg-primary text-white mb-4 px-0 pt-3 rounded mx-auto">
+                <p className="pt-2 pb-1 px-3 border-top">GET YOUR TRX EVERY MOMENT</p>
+                <p className="text-left d-block px-5 mx-auto">
                   You can check all your wallet information, including your
                   deposits, earnings, withdraw and referral statistics in real
                   time. Additional earnings with referral program: 3 levels of
@@ -128,18 +125,17 @@ export default function Guide({contract}) {
                   instantly on your wallet balance and can be withdrawn any time
                   along with earnings.
                 </p>
-                <button className="btn btn-md bg-white w-75">
+                <button className="btn btn-md bg-white text-primary d-block my-4 mx-auto rounded-pill w-75">
                   YOUR WALLET STATISTICS
                 </button>
-              </div>
             </Col>
           </Row>
           <img src={blueLogo} alt="Tron logo" className="mt-4" />
           <p>Your TRX wallet address:</p>
-          <button className="btn btn-md border border-primary d-block mb-4 w-100">
+          <button className="btn btn-md btn-border-primary d-block mb-4 mx-auto">
             {addr || "###"}
           </button>
-          <button className="btn btn-md btn-primary d-block mb-5 w-100">
+          <button className="btn btn-md btn-primary btn-action-primary d-block mb-5 mx-auto">
             REQUEST WITHDRAW HERE
           </button>
         </Col>

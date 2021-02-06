@@ -3,17 +3,17 @@ import blueLogo from '../assets/tron-blue-vector.svg';
 
 export default function Contract() {
     return (
-        <Row>
+        <Row className="my-5 py-5 align-items-center dash-section-border">
             <Col xs={11} className="text-center mx-auto mb-4">
-                <p className="h5">HONEST AND TRANSPARENT</p>                
-                <p className="font-weight-bold">SMART-CONTRACT INDEPENDENT AUDITIONS AND REVIEWS</p>
+                <p className="text-primary section-title">HONEST AND TRANSPARENT</p>                
+                <p className="text-primary section-sub-title">SMART-CONTRACT INDEPENDENT AUDITIONS AND REVIEWS</p>
             </Col>
             <Col xs={11} sm={5} className="text-center mx-auto">
-            <img src={blueLogo} alt="Tron logo" />
-            <p className="text-justify">Auxilary platform smart-contract is published on TRX blockchain. Nobody can change its rules or algorithms, even administration. This provides our participants unconditional confidence in safety of their funds. Anyone can check smart-contract code and be sure that TRONAuxilary platform is honest.</p>
+                <img src={blueLogo} alt="Tron logo" height="178" width="155" className="d-block mx-auto mb-3"/>
+                <p className="text-justify contract-description mt-4">Auxilary platform smart-contract is published on TRX blockchain. Nobody can change its rules or algorithms, even administration. This provides our participants unconditional confidence in safety of their funds. Anyone can check smart-contract code and be sure that TRONAuxilary platform is honest.</p>
             </Col>
             <Col xs={11} sm={5} className="mx-auto">
-                <div style={{height: 300, overflowY: 'scroll'}}>
+                <div style={{height: 400, overflowY: 'scroll'}}>
                     <code>
                         {`
                         contract TronAuxilary{

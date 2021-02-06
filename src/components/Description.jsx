@@ -32,28 +32,28 @@ export default function Description({contract}) {
   }, [contract, twc]);
 
   return (
-    <Container fluid>
+    <Container fluid className="dash-section-border">
       <Row>
         <Col xs={11} sm={12} className="mx-auto">
-          <p className="text-center font-weight-bold">INVESTMENT CONDITIONS</p>
-          <p className="text-center font-weight-bold">THE BEST MARKET OFFER</p>
+          <p className="text-center text-primary section-title">INVESTMENT CONDITIONS</p>
+          <p className="text-center text-primary section-sub-title">THE BEST MARKET OFFER</p>
         </Col>
         <Col xs={11} sm={5} className="mx-auto">
-          <img src={laptopSvg} alt="Latop SVG" />
-          <button className="btn btn-md btn-primary d-block mb-3 w-100">Working only with  TRON (TRX) network</button>
-          <button className="btn btn-md btn-primary d-block mb-3 w-100">Minimal deposit: 10 TRX</button>
-          <button className="btn btn-md btn-primary d-block mb-3 w-100">Total income: 300% (deposit included)</button>
-          <button className="btn btn-md btn-primary d-block mb-3 w-100">Earnings every moment, withdraw any time</button>
+          <img src={laptopSvg} alt="Latop SVG" className="mx-auto d-block" />
+          <button className="btn btn-md btn-primary btn-action-primary d-block mb-3 mx-auto">Working only with  TRON (TRX) network</button>
+          <button className="btn btn-md btn-primary btn-action-primary d-block mb-3 mx-auto">Minimal deposit: 10 TRX</button>
+          <button className="btn btn-md btn-primary btn-action-primary d-block mb-3 mx-auto">Total income: 300% (deposit included)</button>
+          <button className="btn btn-md btn-primary btn-action-primary d-block mb-3 mx-auto">Earnings every moment, withdraw any time</button>
         </Col>
         <Col xs={11} sm={6} className="offset-1 mx-auto">
           {descriptions.map(desc => (
           <div className="my-5" key={desc.title}>
             <p className="h5">{desc.title}</p>
-            <p className="font-weight-bold">{desc.bonus}</p>
-            <p className="text-justify">{desc.body}</p>
+            <p className="font-weight-bold border-left border-primary left-border pl-2">{desc.bonus}</p>
+            <p className="text-justify grey-description-text">{desc.body}</p>
           </div>))}
           <p className="font-weight-bold">Current platform balance (TRX)</p>
-          <button style={{width: '230px'}} className="btn btn-md btn-primary mb-3">{platformBalance}</button>
+          <button className="btn btn-md btn-primary btn-action-primary mb-3">{platformBalance}</button>
         </Col>
       </Row>
     </Container>

@@ -4,7 +4,7 @@ import AppNavbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Description from "./components/Description";
 import Guide from "./components/Guide";
-import { DepositModal, StatisticsModal } from "./components/Modal";
+import { DepositModal, StatisticsModal, InvestModal } from "./components/Modal";
 import Contact from "./components/Contact";
 import Contract from "./components/Contract";
 import TronWebContext from "./contexts";
@@ -355,9 +355,11 @@ function useTronWeb() {
 function App() {
   const [showDeposit, setShowDeposit] = useState(false);
   const [showStat, setShowStat] = useState(false);
+  const [showInvest, setShowInvest] = useState(false);
 
   const handleShowDeposit = () => setShowDeposit(!showDeposit);
   const handleShowStat = () => setShowStat(!showStat);
+  const handleShowInvest = () => setShowInvest(!showDeposit);
 
   const tronWeb = useTronWeb();
 
@@ -368,6 +370,7 @@ function App() {
       <AppNavbar
         onToggleDeposit={handleShowDeposit}
         onToggleStat={handleShowStat}
+        onToggleInvest={handleShowInvest}
       />
       <TronWebContext.Provider value={tronWeb && tronWeb}>
           <Hero contract={contract} onToggleDeposit={handleShowDeposit} />
@@ -385,6 +388,7 @@ function App() {
             onToggle={handleShowStat}
             contract={contract}
           />
+          <InvestModal isOpen={showInvest} onToggle={handleShowInvest} />
           <Contract />
         <Contact
           onToggleDeposit={handleShowDeposit}
