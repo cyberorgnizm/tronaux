@@ -49,8 +49,8 @@ export default function Hero({ contract, onToggleDeposit }) {
     <Container fluid className="pt-5 mt-md-5">
       <Row className="mt-5">
         <Col xs={11} sm={10} lg={5} className="text-center mb-4 mx-auto">
-          <p className="h4 mt-3 mb-5 text-primary">200%</p>
-          <img src={cash} alt="Tron cashout" height="250" width="450" style={{alignSelf: 'center'}} />
+          <p className="h4 mt-3 mb-1 text-primary">200%</p>
+          <img src={cash} alt="Tron cashout" height="400" width="550" style={{alignSelf: 'center'}} />
         </Col>
         <Col xs={11} sm={10} lg={5} className="mx-auto mb-5">
           <div id="hero-description" className="bg-primary text-white">
