@@ -42,13 +42,13 @@ export default function Guide({contract}) {
           <p className="text-center text-primary section-sub-title">Simple 3 steps to get Earnings</p>
         </Col>
         <Col xs={11} sm={5} className="text-center mx-auto mt-4">
-          <p className="font-weight-bold">Step #1: Make deposit</p>
+          <p className="guide-title">Step #1: Make deposit</p>
           <Row className="mb-2">
             <Col xs={11} sm={5} className="bg-primary text-white mr-1 mb-4 px-0 pt-3 rounded mx-auto">
               <p className="pt-2 pb-3 px-3 border-top">GET TRON (TRX)</p>
               <p className="text-left px-3 my-4">
                 We recommend to use: TronLink / TronMask browsers extensions, or
-                TronWallet / Banko mobile apps. You can get TRX coins via
+                KleverWallet / Banko mobile apps. You can get TRX coins via
                 popular exchangers.
               </p>
               <button className="btn btn-md bg-white text-primary d-block my-4 mx-auto px-5 rounded-pill">
@@ -67,17 +67,18 @@ export default function Guide({contract}) {
               </button>
             </Col>
           </Row>
-          <img src={blueLogo} alt="Tron logo" className="mt-4" />
-          <p>Your TRX wallet address:</p>
-          <button className="btn btn-md btn-border-primary d-block mb-3 mx-auto">
-            {addr || "###"}
-          </button>
-          <button className="btn btn-md btn-primary btn-action-primary d-block mb-3 mx-auto">
-            CHECK WALLET STATISTICS
-          </button>
-
-          <p className="font-weight-bold">Step #3: Request withdraw</p>
-          <Col md={9} className="bg-primary text-white mb-4 px-0 pt-3 pb-4 rounded mx-auto">
+          <Col md={11} className="mx-auto">
+            <img src={blueLogo} alt="Tron logo" className="mt-4" />
+            <p>Your TRX wallet address:</p>
+            <button className="btn btn-md btn-border-primary d-block mb-3 mx-auto w-100">
+              {addr || "###"}
+            </button>
+            <button className="btn btn-md btn-primary btn-action-primary d-block mb-3 mx-auto w-100">
+              CHECK WALLET STATISTICS
+            </button>
+          </Col>
+          <p className="guide-title mt-5">Step #3: Request withdraw</p>
+          <Col md={11} className="bg-primary text-white mb-4 px-0 pt-3 pb-4 rounded mx-auto">
               <p className="pt-2 pb-3 px-3 border-top">REQUEST TRX WITHDRAW </p>
               <p className="text-left d-block mb-1 px-4">
                 Your payout will come instantly
@@ -113,9 +114,9 @@ export default function Guide({contract}) {
           <button disabled={showErr} onClick={handleInvestment} className="btn btn-md btn-action-primary text-white d-block mb-3 mx-auto">
             MAKE DEPOSIT HERE
           </button>
-          <p className="font-weight-bold">Step #2: Get earnings</p>
+          <p className="guide-title mt-5">Step #2: Get earnings</p>
           <Row>
-            <Col md={9} className="bg-primary text-white mb-4 px-0 pt-3 rounded mx-auto">
+            <Col sm={9} className="bg-primary text-white mb-4 px-0 pt-3 rounded mx-auto">
                 <p className="pt-2 pb-1 px-3 border-top">GET YOUR TRX EVERY MOMENT</p>
                 <p className="text-left d-block px-5 mx-auto">
                   You can check all your wallet information, including your

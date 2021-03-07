@@ -112,7 +112,7 @@
 .btn-border-primary {
   all: unset;
   width: 428px;
-  height: 46px;
+  height: 46px !important;
   box-shadow: 0px 7px 15px rgba(0, 0, 0, 0.25);
   border-radius: 10.8571px;
   background-color: #fff;
@@ -122,7 +122,7 @@
 .input-border-primary {
   all: unset;
   width: 418px;
-  height: 46px;
+  height: 46px !important;
   box-shadow: 0px 7px 15px rgba(0, 0, 0, 0.25);
   border-radius: 10.8571px;
   background-color: #fff;
@@ -190,4 +190,14 @@
   font-size: 17px;
   line-height: 21px;
   color: #716d6d;
+}
+
+.guide-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 30px;
+  letter-spacing: 0.1em;
+  color: #05299e;
 }
