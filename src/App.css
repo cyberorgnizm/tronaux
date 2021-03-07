@@ -39,6 +39,15 @@
   line-height: 19px;
 }
 
+#hero-description .description-text-list-item {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 23px;
+  color: #ffffff;
+}
+
 .section-title {
   display: block !important;
   font-family: Roboto;
@@ -66,6 +75,19 @@
   line-height: 26px;
   text-align: center;
   letter-spacing: 0.05em;
+}
+
+.column-description {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 140%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #716d6d;
 }
 
 .button-title-text {
@@ -140,4 +162,32 @@
   height: 40px;
   bottom: 330px;
   background: linear-gradient(203.2deg, #ffffff 21.67%, #ffffff 70%);
+}
+
+.investment-description-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26px;
+  color: #303030;
+}
+
+.investment-description-bonus {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: 0.15em;
+  color: #303030;
+}
+
+.investment-description-body {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 21px;
+  color: #716d6d;
 }

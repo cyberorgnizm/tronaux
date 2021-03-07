@@ -68,19 +68,19 @@ export default function Hero({ contract, onToggleDeposit }) {
             </div>
             <p className="border-bottom my-2">GET +200% UP TO YOUR DEPOSITE</p>
             <div className="description-text">
-              <span className="d-block">
-                Blockchain decentrilize and Anonymouse platform
-              </span>
-              <div>
-                <span>Total secure income base on</span>
-                <span className="bg-white p-1 mx-1 rounded-circle">
-                  <img src={blueLogo} alt="Tron logo" width="20" height="15" />
-                </span>
-                <span>TRX smart contract</span>
-              </div>
-              <span className="d-block">
-                Smart contract-verified and audited by independent company
-              </span>
+              <ul className="pl-3">
+                <li className="description-text-list-item">Blockchain decentrilize and Anonymouse platform</li>
+                <li className="description-text-list-item">
+                  <span>Total secure income base on</span>
+                  <span style={{padding: "3.3px"}} className="bg-white mx-1 rounded-circle">
+                    <img src={blueLogo} alt="Tron logo" width="14" height="12" />
+                  </span>
+                  <span>TRX smart contract</span>
+                </li>
+                <li className="description-text-list-item">
+                  <span>Smart contract-verified and audited by independent company</span>
+                </li>
+              </ul>
             </div>
             <button className="btn btn-md bg-white rounded-pill shadow-lg text-primary font-weight-bold d-block w-100 my-3" onClick={onToggleDeposit}>
               MAKE INVESTMENT NOW
@@ -97,32 +97,34 @@ export default function Hero({ contract, onToggleDeposit }) {
         </Col>
       </Row>
       <Row>
-        <Col xs={11} sm={5} className="text-center mx-auto mb-4">
+        <Col xs={11} sm={4} className="text-center mx-auto mb-4">
           <p className="column-title">
             Unlimited earnings with always growing rates
           </p>
-          <p>
+          <p className="column-description">
             We provide investment conditions with growing percentage, depending
             on basic interest rate, smart-contract total balance bonus and
-            personal "hold-bonus". Maximal available profit: +300% per every
+            personal "hold-bonus". Maximal available profit: +200% per every
             deposit
           </p>
         </Col>
-        <Col xs={11} sm={5} className="text-center mx-auto mb-4">
+        <Col xs={11} sm={4} className="text-center mx-auto mb-4">
           <p className="column-title">
             Worldwide legal company with professional team
           </p>
-          <p>
+          <p className="column-description">
+            <span>
             We are the officially registered company with team of trusted
-            professionals on blockchain market. We are working 24/7 to increase
+            professionals on blockchain market. We are working <strong>24/7</strong> to increase
             platform popularity and make it truly worldwide. Join us and get
             your profit!
+            </span>
           </p>
         </Col>
-        <Col xs={11} sm={6} className="text-center mx-auto mb-4">
+        <Col xs={11} sm={5} className="text-center mx-auto mb-4 mt-3">
           <p className="column-title">Reliability of TRX smart-contract.<br/> Scam is impossible!</p>
-          <p className="col-sm-8 mx-auto">
-          TRON AUXILARY runs automatically on the blockchain and  SMART-CONTRACT technology ensures full safety of all participants funds. Nobody can steal funds, delete or change contract functions.
+          <p className="column-description">
+            <span><strong>TRON AUXILARY</strong> runs automatically on the blockchain and  SMART-CONTRACT technology ensures full safety of all participants funds. Nobody can steal funds, delete or change contract functions.</span>
           </p>
         </Col>
         <Col xs={11} sm={11} className="mx-auto mb-4">
