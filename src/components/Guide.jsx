@@ -5,7 +5,7 @@ import blueLogo from "../assets/tron-blue-vector.svg";
 import TronWebContext from "../contexts";
 import Constants from "../constants";
 
-export default function Guide({contract}) {
+export default function Guide({contract, onToggleInvest}) {
   const [amount, setAmount] = useState("");
   const [showErr, setShowErr] = useState(false);
 
@@ -51,7 +51,7 @@ export default function Guide({contract}) {
                 KleverWallet / Banko mobile apps. You can get TRX coins via
                 popular exchangers.
               </p>
-              <button className="btn btn-md bg-white text-primary d-block my-4 mx-auto px-5 rounded-pill">
+              <button className="btn btn-md bg-white text-primary d-block my-4 mx-auto px-5 rounded-pill" onClick={onToggleInvest}>
                 HOW TO GET TRX
               </button>
             </Col>

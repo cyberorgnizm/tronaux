@@ -53,7 +53,7 @@ export function DepositModal({ isOpen, onToggle, contract }) {
               }
               setShowErr(false);
             }}
-            className="form-control text-center"
+            className="form-control modal-input text-center"
           />
           {showErr && (
             <span className="text-danger">
@@ -62,7 +62,7 @@ export function DepositModal({ isOpen, onToggle, contract }) {
           )}
           <button
             disabled={showErr}
-            className="btn btn-md bg-white w-100 mt-4"
+            className="btn btn-md modal-btn-white w-100 mt-4"
             onClick={handleInvestment}
           >
             MAKE DEPOSIT HERE

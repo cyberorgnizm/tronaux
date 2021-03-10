@@ -13,21 +13,21 @@ export default function AppNavbar({onToggleDeposit, onToggleStat, onToggleInvest
       <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="w-100 justify-content-around">
             <NavItem className="h5 flex-fill d-flex">
-              <NavLink active href="#about" className="my-auto mx-auto">About Us</NavLink>
+              <NavLink href="#about" className="my-auto mx-auto">About Us</NavLink>
             </NavItem>
             <NavItem className="h5 flex-fill d-flex">
-              <NavLink active href="#investment" className="my-auto mx-auto" onClick={onToggleInvest}>Investment</NavLink>
+              <NavLink href="#investment" className="my-auto mx-auto" onClick={onToggleInvest}>Investment</NavLink>
             </NavItem>
             <NavItem className="flex-fill text-center d-none d-md-block">
-              <NavLink>
-                <img src={whiteLogo} alt="Tron crypto logo" height="60" className="mx-auto" />
+              <NavLink className="p-0">
+                <img src={whiteLogo} alt="Tron crypto logo" height="75" className="mx-auto" />
               </NavLink>
             </NavItem>
             <NavItem className="h5 flex-fill d-flex">
-              <NavLink active onClick={onToggleDeposit} className="my-auto mx-auto">Make Deposit</NavLink>
+              <NavLink onClick={onToggleDeposit} className="my-auto mx-auto">Make Deposit</NavLink>
             </NavItem>
             <NavItem className="h5 flex-fill d-flex">
-              <NavLink active onClick={onToggleStat} className="my-auto mx-auto">Wallet Statistics</NavLink>
+              <NavLink onClick={onToggleStat} className="my-auto mx-auto">Wallet Statistics</NavLink>
             </NavItem>
           </Nav>
         </Navbar.Collapse>

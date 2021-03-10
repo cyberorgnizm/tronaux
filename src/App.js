@@ -359,7 +359,7 @@ function App() {
 
   const handleShowDeposit = () => setShowDeposit(!showDeposit);
   const handleShowStat = () => setShowStat(!showStat);
-  const handleShowInvest = () => setShowInvest(!showDeposit);
+  const handleShowInvest = () => setShowInvest(!showInvest);
 
   const tronWeb = useTronWeb();
 
@@ -375,7 +375,7 @@ function App() {
       <TronWebContext.Provider value={tronWeb && tronWeb}>
           <Hero contract={contract} onToggleDeposit={handleShowDeposit} />
           <Description contract={contract} />
-          <Guide contract={contract}/>
+          <Guide contract={contract} onToggleInvest={handleShowInvest}/>
           {/* Deposit Modal */}
           <DepositModal
             isOpen={showDeposit}

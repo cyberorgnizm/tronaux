@@ -201,3 +201,42 @@
   letter-spacing: 0.1em;
   color: #05299e;
 }
+
+.modal-btn-white {
+  background: #ffffff;
+  border: 2.34271px solid #05299e;
+  box-sizing: border-box;
+  border-radius: 11.7136px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18.7417px;
+  line-height: 22px;
+  text-align: center;
+  color: #05299e;
+}
+
+.modal-input {
+  background: #ffffff;
+  border: 2.34271px solid #05299e;
+  box-sizing: border-box;
+  border-radius: 11.7136px;
+}
+
+.contract-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24.0049px;
+  line-height: 28px;
+}
+
+/* HTML code tag styles */
+pre{
+  background-color: #141111;
+  color: white;
+  font-family: Consolas,"courier new";
+  padding: 2px;
+  font-size: 105%;
+}
+
