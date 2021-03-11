@@ -10,7 +10,7 @@ export default function Contract() {
           SMART-CONTRACT INDEPENDENT AUDITIONS AND REVIEWS
         </p>
       </Col>
-      <Col xs={11} sm={5} className="text-center mx-auto">
+      <Col xs={11} sm={11} md={5} className="text-center mx-auto">
         <img
           src={blueLogo}
           alt="Tron logo"
@@ -26,8 +26,8 @@ export default function Contract() {
           TRONAuxilary platform is honest.
         </p>
       </Col>
-      <Col xs={11} sm={5} className="mx-auto">
-        <p className="contract-title">Smart-contract code:</p>
+      <Col xs={11} md={5} className="mx-auto mt-sm-5">
+        <p className="contract-title font-weight-bold">Smart-contract code:</p>
         <div style={{ height: 350, overflowY: "scroll", borderRadius: "10px" }}>
           <pre>
             <code>

@@ -25,7 +25,7 @@ export default function Contact({ onToggleDeposit, onToggleStat }) {
         </Col>
         <div className="bg-primary text-white col-12 mt-5">
           <Row>
-            <Col className="py-5 px-4 d-flex justify-content-center align-items-stretch">
+            <Col className="py-5 px-5 d-flex  align-items-stretch">
               <img
                 src={whiteLogo}
                 className="d-inline-block mr-2"
@@ -41,11 +41,11 @@ export default function Contact({ onToggleDeposit, onToggleStat }) {
                 <span className="d-block">2020 © All Rights Reserved</span>
               </div>
             </Col>
-            <Col className="py-5 d-flex flex-column">
-              <p className="d-block">
+            <Col className="py-5 px-5">
+              <p className="d-block text-wrap">
                 Smart-contract address: TQEeNrenZsqNFc628Q4XQd8vRLv4mRVj7h
               </p>
-              <p className="d-block mt-auto">Powered by TRON blockchain</p>
+              <p className="d-block">Powered by TRON blockchain</p>
             </Col>
             <Col className="p-5">
               <button

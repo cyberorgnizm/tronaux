@@ -41,17 +41,17 @@ export default function Guide({contract, onToggleInvest}) {
           <p className="text-center text-primary section-title">How to work with the Platform</p>
           <p className="text-center text-primary section-sub-title">Simple 3 steps to get Earnings</p>
         </Col>
-        <Col xs={11} sm={5} className="text-center mx-auto mt-4">
+        <Col xs={11} sm={11} md={5} className="text-center mx-auto mt-4">
           <p className="guide-title">Step #1: Make deposit</p>
           <Row className="mb-2">
-            <Col xs={11} sm={5} className="bg-primary text-white mr-1 mb-4 px-0 pt-3 rounded mx-auto">
+            <Col xs={11} sm={6} className="bg-primary text-white mr-1 mb-4 px-0 pt-3 rounded mx-auto">
               <p className="pt-2 pb-3 px-3 border-top">GET TRON (TRX)</p>
               <p className="text-left px-3 my-4">
                 We recommend to use: TronLink / TronMask browsers extensions, or
                 KleverWallet / Banko mobile apps. You can get TRX coins via
                 popular exchangers.
               </p>
-              <button className="btn btn-md bg-white text-primary d-block my-4 mx-auto px-5 rounded-pill" onClick={onToggleInvest}>
+              <button className="btn btn-md bg-white text-primary d-block my-5 mx-auto px-5 rounded-pill" onClick={onToggleInvest}>
                 HOW TO GET TRX
               </button>
             </Col>
@@ -93,7 +93,7 @@ export default function Guide({contract, onToggleInvest}) {
               </p>
           </Col>
         </Col>
-        <Col xs={11} sm={5} className="text-center mx-auto mt-4">
+        <Col xs={11} sm={11} md={5} className="text-center mx-auto mt-4">
           <img src={blueLogo} alt="Tron logo" />
           <p>Specify deposit TRX amount here:</p>
           <input
@@ -116,7 +116,7 @@ export default function Guide({contract, onToggleInvest}) {
           </button>
           <p className="guide-title mt-5">Step #2: Get earnings</p>
           <Row>
-            <Col sm={9} className="bg-primary text-white mb-4 px-0 pt-3 rounded mx-auto">
+            <Col sm={12} className="bg-primary text-white mb-4 px-0 pt-3 rounded mx-auto">
                 <p className="pt-2 pb-1 px-3 border-top">GET YOUR TRX EVERY MOMENT</p>
                 <p className="text-left d-block px-5 mx-auto">
                   You can check all your wallet information, including your
