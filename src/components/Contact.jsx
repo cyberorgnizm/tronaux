@@ -47,7 +47,7 @@ export default function Contact({ onToggleDeposit, onToggleStat }) {
               </p>
               <p className="d-block">Powered by TRON blockchain</p>
             </Col>
-            <Col className="p-5">
+            <Col xs={11} sm={11} md={4} className="p-5">
               <button
                 onClick={onToggleDeposit}
                 className="btn btn-md bg-white rounded-pill shadow-lg text-primary font-weight-bold d-block w-100 my-3"
