@@ -373,7 +373,7 @@ function App() {
         onToggleInvest={handleShowInvest}
       />
       <TronWebContext.Provider value={tronWeb && tronWeb}>
-        <div style={{overflowX: "hidden"}}>
+        <div style={{overflowX: "hidden", maxWidth: "100vw"}}>
           <Hero contract={contract} onToggleDeposit={handleShowDeposit} />
           <Description contract={contract} />
           <Guide contract={contract} onToggleInvest={handleShowInvest} />

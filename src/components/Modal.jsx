@@ -326,7 +326,7 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
                 </button>
               </Col>
               <Col sm={12} className="px-3 py-2">
-                <small>
+                <small style={{fontStyle: "italic"}}>
                   Click Withdraw button, and you will get instantly all your
                   deposits earnings and affiliate bonuses with a single
                   transaction. Your personal hold-bonus will be reseted.
@@ -343,7 +343,7 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
               <Col className="my-3 p-2 px-4 border-left d-flex flex-column justify-content-center align-items-start">
                 <span>Number of deposits: {depositAmount}</span>
                 <span>Last deposit date:</span>
-                <span>{depositTime}</span>
+                <strong>{depositTime}</strong>
               </Col>
             </Row>
           </div>
