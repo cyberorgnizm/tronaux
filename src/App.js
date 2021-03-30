@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import './App.css';
+import "./App.css";
 import AppNavbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Description from "./components/Description";
@@ -373,9 +373,10 @@ function App() {
         onToggleInvest={handleShowInvest}
       />
       <TronWebContext.Provider value={tronWeb && tronWeb}>
+        <div style={{overflowX: "hidden"}}>
           <Hero contract={contract} onToggleDeposit={handleShowDeposit} />
           <Description contract={contract} />
-          <Guide contract={contract} onToggleInvest={handleShowInvest}/>
+          <Guide contract={contract} onToggleInvest={handleShowInvest} />
           {/* Deposit Modal */}
           <DepositModal
             isOpen={showDeposit}
@@ -390,10 +391,11 @@ function App() {
           />
           <InvestModal isOpen={showInvest} onToggle={handleShowInvest} />
           <Contract />
-        <Contact
-          onToggleDeposit={handleShowDeposit}
-          onToggleStat={handleShowStat}
-        />
+          <Contact
+            onToggleDeposit={handleShowDeposit}
+            onToggleStat={handleShowStat}
+          />
+        </div>
       </TronWebContext.Provider>
     </>
   );
