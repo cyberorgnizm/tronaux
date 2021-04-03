@@ -370,7 +370,6 @@ function App() {
       <AppNavbar
         onToggleDeposit={handleShowDeposit}
         onToggleStat={handleShowStat}
-        onToggleInvest={handleShowInvest}
       />
       <TronWebContext.Provider value={tronWeb && tronWeb}>
         <div style={{overflowX: "hidden", maxWidth: "100vw"}}>

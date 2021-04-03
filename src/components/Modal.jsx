@@ -326,7 +326,7 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
                 </button>
               </Col>
               <Col sm={12} className="px-3 py-2">
-                <small style={{fontStyle: "italic"}}>
+                <small style={{ fontStyle: "italic" }}>
                   Click Withdraw button, and you will get instantly all your
                   deposits earnings and affiliate bonuses with a single
                   transaction. Your personal hold-bonus will be reseted.
@@ -412,38 +412,47 @@ export function InvestModal({ isOpen, onToggle }) {
           out of energy status!
         </p>
       </Modal.Header>
-      <Modal.Body className="bg-primary text-white border-top-0 p-5">
+      <Modal.Body className="bg-primary text-white border-top-0 py-1">
         <Row>
-          <Col sm={5} className="mx-auto">
+          <Col sm={7} className="mx-auto">
             <p className="h5">How to invest on mobile?</p>
             <p>
-              You can download Banko Wallet, Math Wallet or TronWallet app from
-              application store. After the installation, you can create a new
-              TRX wallet or import an existing TRX wallet, and then transfer the
-              TRX from the exchange to the wallet. Finally, find Bank of TRON
+              You can download <strong>Trust Wallet</strong> or{" "}
+              <strong>Klever Wallet</strong> app from application store. After
+              the installation, you can create a new TRX wallet or import an
+              existing TRX wallet, and then transfer the TRX from the exchange
+              to the wallet. Finally, find <strong>TRONAuxilary </strong>
               within the wallet app or browse our site with the browser in the
               app, and then go to invest or withdraw
             </p>
           </Col>
-          <Col sm={5} className="mx-auto text-center">
-            <img src={whiteLogo} alt="white logo" height="126" width="117" />
+          <Col sm={3} className="mx-auto text-center d-flex">
+            <img
+              src={whiteLogo}
+              alt="white logo"
+              height="156"
+              width="117"
+              className="mr-auto"
+            />
           </Col>
         </Row>
       </Modal.Body>
-      <Modal.Footer className="bg-primary text-white border-top-0 p-3">
-        <Col sm={5} className="mx-auto text-center">
-          <img src={whiteLogo} alt="white logo" height="126" width="117" />
-        </Col>
-        <Col sm={5} className="mx-auto">
-          <p className="h5">How to invest on mobile?</p>
-          <p>
-            You can install the TronLink or TronPay extension on Chrome. After
-            the installation, you can create a new TRX wallet or import an
-            existing TRX wallet, and then transfer the TRX from the exchange to
-            the wallet. Finally, login on TronLink or TronPay to browse this
-            website and invest.
-          </p>
-        </Col>
+      <Modal.Footer className="bg-primary text-white border-top-0 py-5">
+        <Row>
+          <Col sm={3} className="mx-auto text-center d-flex">
+            <img src={whiteLogo} alt="white logo" height="156" width="117" className="ml-auto my-auto" />
+          </Col>
+          <Col sm={7} className="mx-auto">
+            <p className="h5">How to invest on mobile?</p>
+            <p>
+              You can install the TronLink or Tron Mask extension on Chrome.
+              After the installation, you can create a new TRX wallet or import
+              an existing TRX wallet, and then transfer the TRX from the
+              exchange to the wallet. Finally, login on TronLink or TronPay to
+              browse this website and invest.
+            </p>
+          </Col>
+        </Row>
       </Modal.Footer>
     </Modal>
   );

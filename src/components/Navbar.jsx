@@ -2,7 +2,7 @@ import { Nav, Navbar, NavItem, NavLink } from "react-bootstrap";
 import whiteLogo from "../assets/tron-white-logo.svg";
 
 
-export default function AppNavbar({onToggleDeposit, onToggleStat, onToggleInvest}) {
+export default function AppNavbar({onToggleDeposit, onToggleStat}) {
   return (
     <Navbar className="py-2 navbar-dark bg-primary fixed-top shadow-lg" expand="md">
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -13,10 +13,10 @@ export default function AppNavbar({onToggleDeposit, onToggleStat, onToggleInvest
       <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="w-100 justify-content-around">
             <NavItem className="h5 flex-fill d-flex">
-              <NavLink href="#about" className="my-auto mx-auto">About Us</NavLink>
+              <NavLink href="#about-us" className="my-auto mx-auto">About Us</NavLink>
             </NavItem>
             <NavItem className="h5 flex-fill d-flex">
-              <NavLink href="#investment" className="my-auto mx-auto" onClick={onToggleInvest}>Investment</NavLink>
+              <NavLink href="#investment-conditions" className="my-auto mx-auto">Investment</NavLink>
             </NavItem>
             <NavItem className="flex-fill text-center d-none d-md-block">
               <NavLink className="p-0">

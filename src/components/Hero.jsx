@@ -88,7 +88,9 @@ export default function Hero({ contract, onToggleDeposit }) {
             <button ref={refLink} data-referral={`${window.location.origin}/?ref=${twc && twc.defaultAddress.base58}`} className="btn btn-md bg-white rounded-pill shadow-lg text-primary font-weight-bold d-block w-100" onClick={copyToClipBoard}>
               COPY REFERRAL LINK
             </button>
-            <p className="text-center mt-3 border-bottom">Check TronAuxilary Smart contract</p>
+            <p id="about-us" className="text-center mt-3 border-bottom">
+              <a href="https://shasta.tronscan.org/#/contract/TK24Fi6dTYnNxeihPcp36pPX5TmX2DY1Jx" target="__blank" className="text-white text-decoration-none">Check TronAuxilary Smart contract</a>
+            </p>
           </div>
         </Col>
         <Col xs={11} sm={10} className="mx-auto text-center d-flex flex-column mb-5">
@@ -133,7 +135,7 @@ export default function Hero({ contract, onToggleDeposit }) {
             {totalInvested}
           </button>
           <p className="button-title-text mx-auto mx-md-0 mx-lg-0">Total active participants</p>
-          <button className="btn btn-md btn-primary btn-action-primary mb-5 mx-auto mx-md-0 mx-lg-0">{totalParticipants}</button>
+          <button id="investment-conditions" className="btn btn-md btn-primary btn-action-primary mb-5 mx-auto mx-md-0 mx-lg-0">{totalParticipants}</button>
         </Col>
       </Row>
     </Container>

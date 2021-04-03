@@ -47,7 +47,7 @@ export default function Guide({contract, onToggleInvest}) {
             <Col xs={11} sm={6} className="bg-primary text-white mr-1 mb-4 px-0 pt-3 rounded mx-auto">
               <p className="pt-2 pb-3 px-3 border-top">GET TRON (TRX)</p>
               <p className="text-left px-3 my-4">
-                We recommend to use: TronLink / TronMask browsers extensions, or
+                We recommend to use: TronLink browsers extensions, or
                 KleverWallet / Banko mobile apps. You can get TRX coins via
                 popular exchangers.
               </p>
@@ -133,10 +133,10 @@ export default function Guide({contract, onToggleInvest}) {
           </Row>
           <img src={blueLogo} alt="Tron logo" className="mt-4" />
           <p>Your TRX wallet address:</p>
-          <button className="btn btn-md btn-border-primary d-block mb-4 mx-auto">
+          <button className="btn btn-md btn-border-primary d-block mb-4 mx-auto w-100">
             {addr || "###"}
           </button>
-          <button className="btn btn-md btn-primary btn-action-primary d-block mb-5 mx-auto">
+          <button className="btn btn-md btn-primary btn-action-primary d-block mb-5 mx-auto w-100">
             REQUEST WITHDRAW HERE
           </button>
         </Col>
