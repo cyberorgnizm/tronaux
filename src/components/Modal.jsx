@@ -88,6 +88,7 @@ export function DepositModal({ isOpen, onToggle, contract }) {
 
 export function StatisticsModal({ isOpen, onToggle, contract }) {
   const [balance, setBalance] = useState(0);
+  const [isCopied, setIsCopied] = useState(false);
   // percentage rates
   const [userPercentRate, setUserPercentRate] = useState(0);
   const [contractBalanceRate, setContractBalanceRate] = useState(0);
@@ -108,7 +109,7 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
     navigator.clipboard
       .writeText(refLink.current.textContent)
       .then(() => {
-        alert("Referral link successfully copied!");
+        setIsCopied(true);
       })
       .catch(() => {
         alert("Ooops! Failed to copy referral link.");
@@ -383,9 +384,20 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
       <Modal.Footer className="bg-primary text-white border-top-0 p-3">
         <p className="w-100 text-center py-2">Your referral link:</p>
         <div className="w-100 col-9 mx-auto">
-          <button ref={refLink} className="btn btn-md bg-white w-100 mb-3">
-            {window.location.origin}/?ref={twc && twc.defaultAddress.base58}
-          </button>
+          {isCopied ? (
+            <>
+            <button ref={refLink} className="btn btn-md bg-white w-100 mb-1">
+              <mark>
+                {window.location.origin}/?ref={twc && twc.defaultAddress.base58}
+              </mark>
+            </button>
+            <small className="text-white text-center d-block w-100 mb-2">Link successfully copied</small>
+            </>
+          ) : (
+            <button ref={refLink} className="btn btn-md bg-white w-100 mb-3">
+              {window.location.origin}/?ref={twc && twc.defaultAddress.base58}
+            </button>
+          )}
           <button
             onClick={copyToClipBoard}
             className="btn btn-md bg-white w-100"
@@ -440,7 +452,13 @@ export function InvestModal({ isOpen, onToggle }) {
       <Modal.Footer className="bg-primary text-white border-top-0 py-5">
         <Row>
           <Col sm={3} className="mx-auto text-center d-flex">
-            <img src={whiteLogo} alt="white logo" height="156" width="117" className="ml-auto my-auto" />
+            <img
+              src={whiteLogo}
+              alt="white logo"
+              height="156"
+              width="117"
+              className="ml-auto my-auto"
+            />
           </Col>
           <Col sm={7} className="mx-auto">
             <p className="h5">How to invest on mobile?</p>
