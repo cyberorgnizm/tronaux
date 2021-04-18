@@ -39,7 +39,7 @@ export default function Description({contract}) {
           <p className="text-center text-primary section-sub-title">THE BEST MARKET OFFER</p>
         </Col>
         <Col xs={11} sm={11} md={5} className="mx-auto mx-sm-auto ml-md-auto">
-          <img src={laptopSvg} alt="Latop SVG" className="img-fluid" />
+          <img src={laptopSvg} alt="Latop SVG" className="img-fluid d-block mx-md-auto" />
           <button className="btn btn-md btn-primary btn-action-primary d-block mb-3 mx-auto">Working only with  TRON (TRX) network</button>
           <button className="btn btn-md btn-primary btn-action-primary d-block mb-3 mx-auto">Minimal deposit: 10 TRX</button>
           <button className="btn btn-md btn-primary btn-action-primary d-block mb-3 mx-auto">Total income: 300% (deposit included)</button>
