@@ -320,7 +320,7 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
               <Col className="my-3 p-2 px-4 border-left d-flex flex-column justify-content-center align-items-start">
                 <span className="mb-3">Request withdraw:</span>
                 <button
-                  className="btn btn-sm btn-primary w-50"
+                  className="btn btn-sm btn-primary w-auto"
                   onClick={handleWithdrawal}
                 >
                   Withdraw
@@ -383,7 +383,7 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
       </Modal.Body>
       <Modal.Footer className="bg-primary text-white border-top-0 p-3">
         <p className="w-100 text-center py-2">Your referral link:</p>
-        <div className="w-100 col-9 mx-auto">
+        <div className="w-100 col-9 mx-auto h-auto">
           {isCopied ? (
             <>
             <button ref={refLink} className="btn btn-md bg-white w-100 mb-1">
@@ -416,7 +416,7 @@ export function InvestModal({ isOpen, onToggle }) {
       <Modal.Header
         toggle={onToggle}
         closeButton
-        className="bg-primary text-white border-bottom-0 p-5"
+        className="bg-primary text-white border-bottom-0"
       >
         <p className="border-top pt-3 w-100">
           <strong>IMPORTANT!</strong> Do not forget about blockchain fee! You
@@ -444,7 +444,7 @@ export function InvestModal({ isOpen, onToggle }) {
               alt="white logo"
               height="156"
               width="117"
-              className="mr-auto"
+              className="d-none d-md-block mr-auto"
             />
           </Col>
         </Row>
@@ -457,11 +457,11 @@ export function InvestModal({ isOpen, onToggle }) {
               alt="white logo"
               height="156"
               width="117"
-              className="ml-auto my-auto"
+              className="d-none d-md-block ml-auto my-auto"
             />
           </Col>
           <Col sm={7} className="mx-auto">
-            <p className="h5">How to invest on mobile?</p>
+            <p className="h5">How to invest on Desktop?</p>
             <p>
               You can install the TronLink or Tron Mask extension on Chrome.
               After the installation, you can create a new TRX wallet or import

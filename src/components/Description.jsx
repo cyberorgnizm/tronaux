@@ -40,10 +40,10 @@ export default function Description({contract}) {
         </Col>
         <Col xs={11} sm={11} md={5} className="mx-auto mx-sm-auto ml-md-auto">
           <img src={laptopSvg} alt="Latop SVG" className="img-fluid d-block mx-md-auto" />
-          <button className="btn btn-md btn-primary btn-action-primary d-block mb-3 mx-auto">Working only with  TRON (TRX) network</button>
-          <button className="btn btn-md btn-primary btn-action-primary d-block mb-3 mx-auto">Minimal deposit: 10 TRX</button>
-          <button className="btn btn-md btn-primary btn-action-primary d-block mb-3 mx-auto">Total income: 300% (deposit included)</button>
-          <button className="btn btn-md btn-primary btn-action-primary d-block mb-3 mx-auto">Earnings every moment, withdraw any time</button>
+          <button className="btn btn-md btn-primary btn-action-primary d-block mb-3 mx-auto h-auto">Working only with  TRON (TRX) network</button>
+          <button className="btn btn-md btn-primary btn-action-primary d-block mb-3 mx-auto h-auto">Minimal deposit: 10 TRX</button>
+          <button className="btn btn-md btn-primary btn-action-primary d-block mb-3 mx-auto h-auto">Total income: 200% (deposit included)</button>
+          <button className="btn btn-md btn-primary btn-action-primary d-block mb-3 mx-auto h-auto">Earnings every moment, withdraw any time</button>
         </Col>
         <Col xs={11} sm={11} md={5} className="mx-sm-auto mr-md-auto mt-5 mt-sm-5 mt-md-0">
           {descriptions.map(desc => (

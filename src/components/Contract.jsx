@@ -16,9 +16,9 @@ export default function Contract() {
           alt="Tron logo"
           height="178"
           width="155"
-          className="d-block mx-auto mb-3"
+          className="d-none d-md-block mx-auto mb-3"
         />
-        <p className="text-justify contract-description mt-4">
+        <p className="contract-description mt-4">
           Auxilary platform smart-contract is published on TRX blockchain.
           Nobody can change its rules or algorithms, even administration. This
           provides our participants unconditional confidence in safety of their

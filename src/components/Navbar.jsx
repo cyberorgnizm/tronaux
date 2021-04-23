@@ -7,7 +7,7 @@ export default function AppNavbar({onToggleDeposit, onToggleStat}) {
     <Navbar className="py-2 navbar-dark bg-primary fixed-top shadow-lg" expand="md">
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       {/* visible only on small screen */}
-      <Navbar.Brand href="#home" className="flex-fill text-center d-block d-md-none ml-auto">
+      <Navbar.Brand href="#home" className="flex-fill text-center d-block d-md-none mr-5 pr-2">
         <img src={whiteLogo} alt="Tron crypto logo" height="60" className="mx-auto" />
       </Navbar.Brand>
       <Navbar.Collapse id="basic-navbar-nav">

@@ -19,7 +19,7 @@ export default function Contact({ onToggleDeposit, onToggleStat }) {
             className="btn btn-md btn-primary btn-action-primary d-block mb-3 mx-auto d-flex align-items-center"
           >
             <div className="d-inline-block bg-white rounded-circle white-round-background d-flex justify-content-center align-items-center">
-              <img src={telegramLogo} height="50%" />
+              <img src={telegramLogo} height="50%" alt="telegram logo" />
             </div>
             <span className="d-inline-block mx-auto">Telegram Group</span>
           </button>
@@ -29,7 +29,8 @@ export default function Contact({ onToggleDeposit, onToggleStat }) {
             <Col className="d-flex  align-items-stretch px-5 py-4">
               <img
                 src={whiteLogo}
-                className="d-inline-block mr-2"
+                alt="tron white logo"
+                className="d-none d-md-inline-block mr-2"
                 height="120"
                 width="104"
               />
