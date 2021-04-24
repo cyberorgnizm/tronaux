@@ -283,12 +283,12 @@ export function StatisticsModal({ isOpen, onToggle, contract }) {
           />
         </Col>
         <Col sm={10} className="mx-auto">
-          <p>
+          <p className="d-block">
             <span className="d-block my-3 text-center">
               Your referral link:
             </span>
-            <span className="d-block text-center font-weight-bold my-3">
-              https://troneauxilary.net/?ref=TDdr96DxirQBArbQzcFnph9Ffs8mifdQrn
+            <span style={{wordBreak: "break-word"}} className="d-block wrap text-center font-weight-bold my-3">
+              https://tronauxilary.net/?ref=TDdr96DxirQBArbQzcFnph9Ffs8mifdQrn
             </span>
             <span className="d-block text-center">
               Share this link with your partners to get referral rewards - You
@@ -416,7 +416,7 @@ export function InvestModal({ isOpen, onToggle }) {
       <Modal.Header
         toggle={onToggle}
         closeButton
-        className="bg-primary text-white border-bottom-0"
+        className="bg-primary text-white border-bottom-0 p-4"
       >
         <p className="border-top pt-3 w-100">
           <strong>IMPORTANT!</strong> Do not forget about blockchain fee! You
@@ -426,7 +426,7 @@ export function InvestModal({ isOpen, onToggle }) {
       </Modal.Header>
       <Modal.Body className="bg-primary text-white border-top-0 py-1">
         <Row>
-          <Col sm={7} className="mx-auto">
+          <Col sm={7} className="mx-auto p-4">
             <p className="h5">How to invest on mobile?</p>
             <p>
               You can download <strong>Trust Wallet</strong> or{" "}
@@ -460,7 +460,7 @@ export function InvestModal({ isOpen, onToggle }) {
               className="d-none d-md-block ml-auto my-auto"
             />
           </Col>
-          <Col sm={7} className="mx-auto">
+          <Col sm={7} className="mx-auto px-2 pt-0">
             <p className="h5">How to invest on Desktop?</p>
             <p>
               You can install the TronLink or Tron Mask extension on Chrome.

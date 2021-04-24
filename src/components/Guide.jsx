@@ -48,7 +48,7 @@ export default function Guide({contract, onToggleInvest}) {
               <p className="pt-2 pb-3 px-3 border-top">GET TRON (TRX)</p>
               <p className="text-left px-3 my-4">
                 We recommend to use: TronLink browsers extensions, or
-                KleverWallet / Banko mobile apps. You can get TRX coins via
+                 <strong> KleverWallet</strong> / <strong>TrustWallet</strong> mobile apps. You can get TRX coins via
                 popular exchangers.
               </p>
               <button className="btn btn-md bg-white text-primary d-block my-5 mx-auto px-5 rounded-pill" onClick={onToggleInvest}>

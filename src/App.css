@@ -245,3 +245,23 @@ pre{
   font-size: 105%;
 }
 
+
+
+/* -------------- */
+/* Media queries */
+/* ------------ */
+
+@media (max-width: 576px) {
+  .guide-title {
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  .section-title {
+    font-size: 25px;
+  }
+  
+  .section-sub-title {
+    font-size: 20px;
+  }
+}
