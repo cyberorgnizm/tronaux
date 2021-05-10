@@ -463,7 +463,7 @@ export function InvestModal({ isOpen, onToggle }) {
           <Col sm={7} className="mx-auto px-2 pt-0">
             <p className="h5">How to invest on Desktop?</p>
             <p>
-              You can install the TronLink or Tron Mask extension on Chrome.
+              You can install the <strong>TronLink</strong> or <strong>Tron Mask</strong> extension on Chrome.
               After the installation, you can create a new TRX wallet or import
               an existing TRX wallet, and then transfer the TRX from the
               exchange to the wallet. Finally, login on TronLink or TronPay to

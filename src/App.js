@@ -375,7 +375,7 @@ function App() {
         <div style={{overflowX: "hidden", maxWidth: "100vw"}}>
           <Hero contract={contract} onToggleDeposit={handleShowDeposit} />
           <Description contract={contract} />
-          <Guide contract={contract} onToggleInvest={handleShowInvest} />
+          <Guide contract={contract} onToggleInvest={handleShowInvest} onToggleDeposit={handleShowDeposit}/>
           {/* Deposit Modal */}
           <DepositModal
             isOpen={showDeposit}

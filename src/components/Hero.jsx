@@ -66,10 +66,10 @@ export default function Hero({ contract, onToggleDeposit }) {
               />
               <span>Tron</span>
             </div>
-            <p className="border-bottom my-2">GET +200% UP TO YOUR DEPOSITE</p>
+            <p className="border-bottom my-2">GET +200% UP TO YOUR DEPOSIT</p>
             <div className="description-text">
               <ul className="pl-3">
-                <li className="description-text-list-item">Blockchain decentrilize and Anonymouse platform</li>
+                <li className="description-text-list-item">Blockchain decentrilize and Anonymous platform</li>
                 <li className="description-text-list-item">
                   <span>Total secure income base on</span>
                   <span style={{padding: "3.3px"}} className="bg-white mx-1 rounded-circle">

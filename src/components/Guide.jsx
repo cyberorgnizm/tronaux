@@ -5,7 +5,7 @@ import blueLogo from "../assets/tron-blue-vector.svg";
 import TronWebContext from "../contexts";
 import Constants from "../constants";
 
-export default function Guide({contract, onToggleInvest}) {
+export default function Guide({contract, onToggleInvest, onToggleDeposit}) {
   const [amount, setAmount] = useState("");
   const [showErr, setShowErr] = useState(false);
 
@@ -62,7 +62,7 @@ export default function Guide({contract, onToggleInvest}) {
                 get earnings every moment. Minimal deposit amount is 10 TRX. No
                 maximal amount.
               </p>
-              <button className="btn btn-md bg-white text-primary d-block my-4 mx-auto px-5 rounded-pill">
+              <button onClick={onToggleDeposit} className="btn btn-md bg-white text-primary d-block my-4 mx-auto px-5 rounded-pill">
                 MAKE DEPOSIT
               </button>
             </Col>
